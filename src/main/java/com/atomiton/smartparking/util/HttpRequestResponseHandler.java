@@ -12,7 +12,7 @@
 	Unless you agree with the clauses set out in the EULA, you may not install or 
 	use any Atomiton Software.
  */
-package com.atomiton.hellotql.util;
+package com.atomiton.smartparking.util;
 
 
 import java.io.BufferedReader;

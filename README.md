@@ -43,3 +43,52 @@ cd SmartParkingHelloWorld
 build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld
 ```
 
+#### SmartParking HelloWorld Demonstrates Following Features
+
+1. Get the Parking Lot Organization ID. This feature makes a simple HTTP GET call on the following URL as 
+described in the documentation section. 
+
+URL: http://tqldev.atomiton.com:8080/fid-smartparking
+PARAMETERS: "Command=readAll&Model=Organization";
+
+The response JSON is:
+{
+    "Type": "ParkingLot.ParkingLotAssets.Organization",
+    "Format": "version,timestamp",
+    "Key": "Organization",
+    "Organization": {
+        "AddressStreetName1": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": "Mission & 4th"
+        },
+        "id": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": "Atom-Org-1" <<<---------------------ID Of the Organization
+        },
+        "LocLon": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": 88.1212
+        },
+        "Name": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": "Atomiton Smart Parking"
+        },
+        "LocLat": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": -122.1212
+        },
+        "Email": {
+            "Version": 2,
+            "Timestamp": 1424117577573,
+            "Value": "parking@atomiton.com"
+        },
+        "sid": "JOKALN3FAAAH6AABAH5NXIXA"
+    }
+}
+
+

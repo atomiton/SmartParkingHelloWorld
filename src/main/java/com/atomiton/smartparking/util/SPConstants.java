@@ -12,15 +12,25 @@
 	Unless you agree with the clauses set out in the EULA, you may not install or 
 	use any Atomiton Software.
  */
-package com.atomiton.hellotql.util;
+package com.atomiton.smartparking.util;
 
 /**
  * Maintain list of all the constants used through out the program.
  * @author baseerkhan
  *
  */
-public class TQLConstants {
+public class SPConstants {
+	//Web sockets to recieve events.
+	public static String SP_EVENTS_WSURL = "ws://tqldev.atomiton.com:9090/fid-ws";
 	
-	public static String TQL_EVENTS_WSURL = "ws://tqldev.atomtion.com:9090";
+	public static String SERVER_URL = "http://tqldev.atomiton.com:8080/fid-smartparking";
+	
+	public static String SP_ORG_PARAMS = "Command=readAll&Model=Organization";
+	
+	public static String SNAPSHOT_URL = "http://tqldev.atomiton.com:8080/fid-ParkingResoures/res/";
+	
+	public static String SNAPSHOT_FILENAME = "splatest.json";
+	
+	
 	
 }
