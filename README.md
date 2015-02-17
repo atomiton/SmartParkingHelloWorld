@@ -52,6 +52,7 @@ URL: http://tqldev.atomiton.com:8080/fid-smartparking
 PARAMETERS: "Command=readAll&Model=Organization";
 
 The response JSON is:
+```json
 {
     "Type": "ParkingLot.ParkingLotAssets.Organization",
     "Format": "version,timestamp",
@@ -90,5 +91,5 @@ The response JSON is:
         "sid": "JOKALN3FAAAH6AABAH5NXIXA"
     }
 }
-
+```
 
