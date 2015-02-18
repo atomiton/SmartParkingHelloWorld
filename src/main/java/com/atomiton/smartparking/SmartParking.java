@@ -15,6 +15,9 @@
 package com.atomiton.smartparking;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -27,6 +30,7 @@ import com.atomiton.smartparking.model.ParkingFloor;
 import com.atomiton.smartparking.model.ParkingLot;
 import com.atomiton.smartparking.model.ParkingSpot;
 import com.atomiton.smartparking.util.HttpRequestResponseHandler;
+import com.atomiton.smartparking.util.ParkingLotAction;
 import com.atomiton.smartparking.util.SPConstants;
 import com.atomiton.smartparking.util.WebSocketListener;
 
@@ -59,42 +63,44 @@ public class SmartParking {
 				}
 				case "snapshot": {
 					//Construct the URL to get Parking Lot snapshot
-					String snapURL = SPConstants.SNAPSHOT_URL + getOrgId() + "/" + SPConstants.SNAPSHOT_FILENAME;
-					String output = HttpRequestResponseHandler.sendGet(snapURL,null);
-					ObjectMapper obj = new ObjectMapper();
-					ParkingLot pl = obj.readValue(output, ParkingLot.class);
-					//Read Various values of the lot..
-					System.out.println(pl.getOrganization().getName());
-					for (ParkingFloor pf: pl.getParkingFloors()) {
-						System.out.println("Floor Number: " + pf.getFloorInfo().getFloorNumber());
-						for (ParkingSpot ps: pf.getParkingSpots()) {
-							System.out.println("Parking Spot id: " + ps.getId());
+					printSnapshot();
+					break;
+				}
+
+				case "events": {
+					WebSocketClient client = new WebSocketClient();
+					WebSocketListener wsListener = new WebSocketListener();
+					try {
+						client.start();
+						URI wsUri = new URI(SPConstants.SP_EVENTS_WSURL);
+						ClientUpgradeRequest request = new ClientUpgradeRequest();
+						client.connect(wsListener, wsUri, request);
+						System.out.printf("Connecting to : %s%n", wsUri);
+						wsListener.awaitClose(5, TimeUnit.SECONDS);
+					} catch (Throwable t) {
+						t.printStackTrace();
+					} finally {
+						try {
+							client.stop();
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 					}
 					break;
 				}
-				
-				case "events": {
-					WebSocketClient client = new WebSocketClient();
-			        WebSocketListener wsListener = new WebSocketListener();
-			        try {
-			            client.start();
-			            URI wsUri = new URI(SPConstants.SP_EVENTS_WSURL);
-			            ClientUpgradeRequest request = new ClientUpgradeRequest();
-			            client.connect(wsListener, wsUri, request);
-			            System.out.printf("Connecting to : %s%n", wsUri);
-			            wsListener.awaitClose(5, TimeUnit.SECONDS);
-			        } catch (Throwable t) {
-			            t.printStackTrace();
-			        } finally {
-			            try {
-			                client.stop();
-			            } catch (Exception e) {
-			                e.printStackTrace();
-			            }
-			        }
+
+				case "update": {
+					ParkingLot pl = getSnapshot();
+					Map<String, String> areaMap = getAreaLightMap(pl);
+					String newIntensity = "90";
+					Set<String> keys = areaMap.keySet(); //All the spotIds
+					for (String spotId: keys) {
+						//Change the intensity of all floors one at a time.
+						ParkingLotAction.actionOnAreaLight(areaMap.get(spotId), spotId, newIntensity);
+					}
+					break;
 				}
-				break;
+
 				default: {
 					printHelp();
 					break;
@@ -108,7 +114,7 @@ public class SmartParking {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static String getOrgId() throws Exception {
 		System.out.println("Getting list of Organizations..");
 		String output = HttpRequestResponseHandler.sendGet(
@@ -119,6 +125,40 @@ public class SmartParking {
 		String id =  obj.getJSONObject("Organization").getJSONObject("id").getString("Value");
 		System.out.println("Org Id is: " + id);
 		return id;
+	}
+
+	public static ParkingLot getSnapshot() throws Exception {
+		String snapURL = SPConstants.SNAPSHOT_URL + getOrgId() + "/" + SPConstants.SNAPSHOT_FILENAME;
+		String output = HttpRequestResponseHandler.sendGet(snapURL,null);
+		ObjectMapper obj = new ObjectMapper();
+		ParkingLot pl = obj.readValue(output, ParkingLot.class);
+		return pl;
+	}
+
+
+	public static Map<String, String> getAreaLightMap(ParkingLot pl) {
+		Map<String, String> alMap = new HashMap<String, String>();
+		for (ParkingFloor pf: pl.getParkingFloors()) {
+			for (ParkingSpot ps: pf.getParkingSpots()) {
+				if (ps.getAreaLightInfo() != null) { //Is Area Light attached to the spot?
+					System.out.println(ps.getId() + "---->" + ps.getAreaLightInfo().getid());
+					alMap.put(ps.getId(), ps.getAreaLightInfo().getid());
+				}
+			}
+		}
+		return alMap;
+	}
+
+	public static void printSnapshot() throws Exception {
+		ParkingLot pl = getSnapshot();
+		//Read Various values of the lot..
+		System.out.println(pl.getOrganization().getName());
+		for (ParkingFloor pf: pl.getParkingFloors()) {
+			System.out.println("Floor Number: " + pf.getFloorInfo().getFloorNumber());
+			for (ParkingSpot ps: pf.getParkingSpots()) {
+				System.out.println("Parking Spot id: " + ps.getId());
+			}
+		}
 	}
 
 	private static void printHelp() {

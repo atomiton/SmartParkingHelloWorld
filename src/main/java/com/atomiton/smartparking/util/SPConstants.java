@@ -29,6 +29,8 @@ public class SPConstants {
 	
 	public static String SNAPSHOT_URL = "http://tqldev.atomiton.com:8080/fid-ParkingResoures/res/";
 	
+	public static String ACTIONS_URL = "http://tqldev.atomiton.com:8080/fid-actions";
+	
 	public static String SNAPSHOT_FILENAME = "splatest.json";
 	
 	
