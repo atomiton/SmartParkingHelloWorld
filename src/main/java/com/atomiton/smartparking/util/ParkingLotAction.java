@@ -45,42 +45,55 @@ public class ParkingLotAction {
 		System.out.println("Changing Intensity Level :" + intensityLevel);
 		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
 	}
-	
+
+	public static void updateParkingMeterPrice(String serverURL, String sid, 
+			String version, String price)
+					throws Exception {
+		String pJSON = "{" + 
+				"\"Model\": \"ParkingMeter\", " +
+				"\"ParkingMeter\": { " +
+				"\"sid\": \"" + sid + "\", " +
+				"\"parkignMeterLabel\": {\"Version\":\"" + version + "\", \"Value\":\"" + price + "\"}}}";
+
+		System.out.println("Changing Price :" + price);
+		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
+	}
+
 	//This method updates the AreaLight;
-		public static void updateAreaLightId(
-				String serverURL, String sid, String version, String areaLightId)
-						throws Exception {
-			String pJSON = "{" + 
-					"\"Model\": \"AreaLight\", " +
-					"\"AreaLight\": { " +
-					"\"sid\": \"" + sid + "\", " +
-					"\"id\": {\"Version\":\"" + version + "\", \"Value\":\"" + areaLightId + "\"}}}";
+	public static void updateAreaLightId(
+			String serverURL, String sid, String version, String areaLightId)
+					throws Exception {
+		String pJSON = "{" + 
+				"\"Model\": \"AreaLight\", " +
+				"\"AreaLight\": { " +
+				"\"sid\": \"" + sid + "\", " +
+				"\"id\": {\"Version\":\"" + version + "\", \"Value\":\"" + areaLightId + "\"}}}";
 
-			System.out.println("Changing Id :" + areaLightId);
-			HttpRequestResponseHandler.sendPut(serverURL, pJSON);
-		}
-	
-	
-	//Get the current state of the Area Light. This is needed to get the current version of the 
-		//Attribute "intensityLevel" as well as internal Id refered to as SID.
-		public static String getAreaLightBySpotId(String serverURL, String spotId) 
-				throws Exception {
+		System.out.println("Changing Id :" + areaLightId);
+		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
+	}
 
-			String filterName = 
-					"{\"eq\": {\"target\":\"parkingSpotId\", \"value\":\"" + spotId + "\"} }";
-
-			List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
-			nvPairs.add(new BasicNameValuePair("Command", "read"));
-			nvPairs.add(new BasicNameValuePair("Model", "AreaLight")); //Model Name is AreaLight
-			nvPairs.add(new BasicNameValuePair("FilterName", filterName));
-			String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
-
-			String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
-			return getJSON;
-		}
 
 	//Get the current state of the Area Light. This is needed to get the current version of the 
 	//Attribute "intensityLevel" as well as internal Id refered to as SID.
+	public static String getAreaLightBySpotId(String serverURL, String spotId) 
+			throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"parkingSpotId\", \"value\":\"" + spotId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+		nvPairs.add(new BasicNameValuePair("Model", "AreaLight")); //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
+		return getJSON;
+	}
+
+	//Get the current state of the Area Light. This is needed to get the current version of the 
+	//Attribute "intensityLevel" as well as internal Id referred to as SID.
 	public static String getAreaLightById(String serverURL, String areaLightId) 
 			throws Exception {
 
@@ -97,9 +110,28 @@ public class ParkingLotAction {
 		return getJSON;
 	}
 
+
+	//Get the current state of the Area Light. This is needed to get the current version of the 
+	//Attribute "intensityLevel" as well as internal Id refered to as SID.
+	public static String getParkingMeterById(String serverURL, String pmId) 
+			throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"id\", \"value\":\"" + pmId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+		nvPairs.add(new BasicNameValuePair("Model", "ParkingMeter")); //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
+		return getJSON;
+	}
+
 	//This methods prepares for action on AreaLight
 	public static void actionOnAreaLight(String areaLightId, String spotId, String newIntensity)
-	throws Exception {
+			throws Exception {
 		String psr = getAreaLightById(SPConstants.SERVER_URL, areaLightId);
 		if (psr != null) {
 			JSONObject obj = new JSONObject(psr);
@@ -112,22 +144,39 @@ public class ParkingLotAction {
 			updateAreaLightIntensity(SPConstants.ACTIONS_URL+uri, sid, intensityVersion, newIntensity);
 		}
 	}
-	
-	//This methods prepares for action on AreaLight
-		public static void addMissingAreaLightId(String areaLightId, String spotId, String newIntensity)
-		throws Exception {
-			String psr = getAreaLightBySpotId(SPConstants.SERVER_URL, spotId);
-			if (psr != null) {
-				System.out.println(psr);
-				JSONObject obj = new JSONObject(psr);
-				String sid = obj.getJSONObject("AreaLight").getString("sid");
-				String idVersion = ""+obj.getJSONObject("AreaLight").getJSONObject("id").getInt("Version");
-				System.out.println(sid + "  " + " " + idVersion);
-				String target = spotId+"."+areaLightId;
-				String result = newIntensity;
-				String uri = "?Command=update&Target=" + target + "&Result=" + result;
-				updateAreaLightId(SPConstants.ACTIONS_URL+uri, sid, idVersion, areaLightId);
-			}
+
+
+	//This methods prepares for action on Parking Meter
+	public static void actionOnParkingMeter(String pmeterId, String spotId, String newPrice)
+			throws Exception {
+		String psr = getParkingMeterById(SPConstants.SERVER_URL, pmeterId);
+		if (psr != null) {
+			JSONObject obj = new JSONObject(psr);
+			String sid = obj.getJSONObject("ParkingMeter").getString("sid");
+			String intensityVersion = ""+obj.getJSONObject("ParkingMeter").getJSONObject("parkingMeterLabel").getInt("Version");
+			System.out.println(sid + "  " + " " + intensityVersion);
+			String target = spotId+"."+pmeterId;
+			String result = newPrice;
+			String uri = "?Command=update&Target=" + target + "&Result=" + result;
+			updateParkingMeterPrice(SPConstants.ACTIONS_URL+uri, sid, intensityVersion, newPrice);
 		}
+	}
+
+	//This methods prepares for action on AreaLight
+	public static void addMissingAreaLightId(String areaLightId, String spotId, String newIntensity)
+			throws Exception {
+		String psr = getAreaLightBySpotId(SPConstants.SERVER_URL, spotId);
+		if (psr != null) {
+			System.out.println(psr);
+			JSONObject obj = new JSONObject(psr);
+			String sid = obj.getJSONObject("AreaLight").getString("sid");
+			String idVersion = ""+obj.getJSONObject("AreaLight").getJSONObject("id").getInt("Version");
+			System.out.println(sid + "  " + " " + idVersion);
+			String target = spotId+"."+areaLightId;
+			String result = newIntensity;
+			String uri = "?Command=update&Target=" + target + "&Result=" + result;
+			updateAreaLightId(SPConstants.ACTIONS_URL+uri, sid, idVersion, areaLightId);
+		}
+	}
 
 }

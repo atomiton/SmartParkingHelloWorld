@@ -162,5 +162,99 @@ build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld events
 
 ##### Taking Actions on things (Example: Area Light, Parking Meter, Digital Signage etc)
 
-This example show how to take actions on Parking Area Lights. We are going to set the intensity of the Parking Area light to 70%.
+This example show how to take actions on Parking Area Lights. We are going to set the intensity of the Parking Area light to given value in command line argument as below.
+```
+build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld updateLight 70
+```
+
+
+
+######The steps to actions are:
+
+###### 1. Populate a HashMap of ParkingSpot Ids to AreaLight Ids
+```java
+/**
+	 * This method creates a map of Parking Spot where Area Lights are
+       attached.
+	 * @param pl - Parking Lot
+	 * @return
+	 */
+	public static Map<String, String> getAreaLightMap(ParkingLot pl) {
+		Map<String, String> alMap = new HashMap<String, String>();
+		for (ParkingFloor pf: pl.getParkingFloors()) {
+			for (ParkingSpot ps: pf.getParkingSpots()) {
+                //Is Area Light attached to the spot?
+				if (ps.getAreaLightInfo() != null) { 
+					System.out.println(ps.getId() + "---->" + 
+                    ps.getAreaLightInfo().getid());
+					alMap.put(ps.getId(), ps.getAreaLightInfo().getid());
+				}
+			}
+		}
+		return alMap;
+	}
+```
+
+###### 2. Get the current record of AreaLight to be changed i.e. query by AreaLight Id.
+
+```java
+/*Get the current state of the Area Light. This is needed to get the current version of the Attribute "intensityLevel" as well as internal Id referred to as SID.
+*/
+	public static String getAreaLightById(String serverURL, 
+     String areaLightId) throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"id\", \"value\":\"" + areaLightId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+        //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("Model", "AreaLight")); 
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(
+               serverURL, paramString);
+		return getJSON;
+	}
+```
+
+###### 3. Call 'Update' API using ACTIONS URL as below.
+```java
+//This method updates the AreaLight;
+	public static void updateAreaLightIntensity(
+			String serverURL, String sid, String version, 
+            String intensityLevel)
+			throws Exception {
+		String pJSON = "{" + 
+				"\"Model\": \"AreaLight\", " +
+				"\"AreaLight\": { " +
+				"\"sid\": \"" + sid + "\", " +
+				"\"intensityLevel\": {\"Version\":\"" + version + "\", \"Value\":\"" + intensityLevel + "\"}}}";
+		System.out.println("Changing Intensity Level :" + intensityLevel);
+		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
+	}
+```
+
+###### 4. Steps 2 and 3 are combined into one convinent method
+```java
+//This methods prepares for action on AreaLight
+	public static void addMissingAreaLightId(String areaLightId, String spotId, String newIntensity)
+			throws Exception {
+		String psr = getAreaLightBySpotId(SPConstants.SERVER_URL, spotId);
+		if (psr != null) {
+			System.out.println(psr);
+			JSONObject obj = new JSONObject(psr);
+			String sid = obj.getJSONObject("AreaLight").getString("sid");
+			String idVersion = 
+                 ""+obj.getJSONObject("AreaLight").getJSONObjec"id").getInt("Version");
+			System.out.println(sid + "  " + " " + idVersion);
+			String target = spotId+"."+areaLightId;
+			String result = newIntensity;
+			String uri = "?Command=update&Target=" + target + "&Result=" + result;
+			updateAreaLightId(SPConstants.ACTIONS_URL+uri, sid, 
+            idVersion, areaLightId);
+		}
+	}
+```
 

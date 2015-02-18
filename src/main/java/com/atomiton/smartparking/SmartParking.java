@@ -89,14 +89,32 @@ public class SmartParking {
 					break;
 				}
 
-				case "update": {
+				case "updateLight": {
 					ParkingLot pl = getSnapshot();
 					Map<String, String> areaMap = getAreaLightMap(pl);
 					String newIntensity = "90";
+					if (args.length > 1) {
+						newIntensity = args[1];
+					}
 					Set<String> keys = areaMap.keySet(); //All the spotIds
 					for (String spotId: keys) {
 						//Change the intensity of all floors one at a time.
 						ParkingLotAction.actionOnAreaLight(areaMap.get(spotId), spotId, newIntensity);
+					}
+					break;
+				}
+				
+				case "updatePrice": {
+					ParkingLot pl = getSnapshot();
+					Map<String, String> pMeterMap = getParkingMeterMap(pl);
+					String newPrice = "1";
+					if (args.length > 1) {
+						newPrice = args[1];
+					}
+					Set<String> keys = pMeterMap.keySet(); //All the spotIds
+					for (String spotId: keys) {
+						//Change the intensity of all floors one at a time.
+						ParkingLotAction.actionOnParkingMeter(pMeterMap.get(spotId), spotId, newPrice);
 					}
 					break;
 				}
@@ -136,6 +154,11 @@ public class SmartParking {
 	}
 
 
+	/**
+	 * This method creates a map of Parking Spot where Area Lights are attached.
+	 * @param pl
+	 * @return
+	 */
 	public static Map<String, String> getAreaLightMap(ParkingLot pl) {
 		Map<String, String> alMap = new HashMap<String, String>();
 		for (ParkingFloor pf: pl.getParkingFloors()) {
@@ -147,6 +170,25 @@ public class SmartParking {
 			}
 		}
 		return alMap;
+	}
+	
+	
+	/**
+	 * This method creates a map of Parking Spot where Parking Meters are attached.
+	 * @param pl
+	 * @return
+	 */
+	public static Map<String, String> getParkingMeterMap(ParkingLot pl) {
+		Map<String, String> pmMap = new HashMap<String, String>();
+		for (ParkingFloor pf: pl.getParkingFloors()) {
+			for (ParkingSpot ps: pf.getParkingSpots()) {
+				if (ps.getParkingMeterInfo() != null) { //Is Parking attached to the spot?
+					System.out.println(ps.getId() + "---->" + ps.getAreaLightInfo().getid());
+					pmMap.put(ps.getId(), ps.getParkingMeterInfo().getid());
+				}
+			}
+		}
+		return pmMap;
 	}
 
 	public static void printSnapshot() throws Exception {
@@ -166,7 +208,8 @@ public class SmartParking {
 		System.out.println("getOrgs");
 		System.out.println("snapshot");
 		System.out.println("events");
-		System.out.println("update");
+		System.out.println("updateLight");
+		System.out.println("updatePrice");
 	}
 
 

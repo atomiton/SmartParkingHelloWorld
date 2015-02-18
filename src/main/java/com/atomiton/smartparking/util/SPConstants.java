@@ -21,7 +21,7 @@ package com.atomiton.smartparking.util;
  */
 public class SPConstants {
 	//Web sockets to recieve events.
-	public static String SP_EVENTS_WSURL = "ws://localhost:8090/fid-sensors";
+	public static String SP_EVENTS_WSURL = "ws://tqldev.atomiton.com:8090/fid-sensors";
 	
 	public static String SERVER_URL = "http://tqldev.atomiton.com:8080/fid-smartparking";
 	
