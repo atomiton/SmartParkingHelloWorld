@@ -48,7 +48,9 @@ build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld <options>
 
 #### IV. SmartParking HelloWorld Demonstrates Following Features
 
-1. Get the Parking Lot Organization ID. This feature makes a simple HTTP GET call on the following URL as 
+######Get the Parking Lot Organization ID. 
+
+This feature makes a simple HTTP GET call on the following URL as 
 described in the documentation section. 
 
 URL:  http://tqldev.atomiton.com:8080/fid-smartparking
@@ -101,11 +103,64 @@ You can run the following command to see the output.
 build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld getOrgs
 ```
 
-2.Get the Initial Parking Lot Snapshot and display various Ids associated with the parking lot - example: Floor, Parking Spots
+###### Get the Initial Parking Lot Snapshot
+This will display various Ids associated with the parking lot - example: Floor, Parking Spots
+```java
+//Construct the URL to get Parking Lot snapshot
+String snapURL = SPConstants.SNAPSHOT_URL + getOrgId() + "/" + SPConstants.SNAPSHOT_FILENAME;
+
+//Make a HTTP Call.
+String output = HttpRequestResponseHandler.sendGet(snapURL,null);
+
+//Parse the JSON Output
+ObjectMapper obj = new ObjectMapper();
+ParkingLot pl = obj.readValue(output, ParkingLot.class);
+//Read Various values of the lot..
+System.out.println(pl.getOrganization().getName());
+//Loop through the floors and then spots.
+for (ParkingFloor pf: pl.getParkingFloors()) {
+	System.out.println("Floor Number: " + pf.getFloorInfo().getFloorNumber());
+	for (ParkingSpot ps: pf.getParkingSpots()) {
+		System.out.println("Parking Spot id: " + ps.getId());
+	}
+}
+
+```
+You can run the following command to see various Parking floors and Spot Ids printed
+```
+build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld snapshot
+```
 
 
+###### Recieve the magnetic sensor and camera events. 
 
-3.Recieve the magnetic sensor and camera events.
+The sample code uses Websocket Jetty Client library to connect to the Atomiton's Websocket server and listen to the events.
 
-4.Update the Area Light intensity. This example can be used to update other things in the parking lot like, Digital Sign, Parking Meter
+You can run the following command to see various magnetic sensors and camera events printed out on the console. You can start applying the business logic to process the events and take some actions on things in the parking lot. You can look at onMessage function of the WebSocketListener class
+```java
+@OnWebSocketMessage
+    public void onMessage(String msg) {
+        System.out.printf("Got msg: %s%n", msg);
+        //Do something with it. This is where you fill in the
+        //business logic to manage the parking lot
+    }
+
+```
+
+```
+build/install/SmartParkingHelloWorld/bin/SmartParkingHelloWorld events
+```
+######Camera Event Example
+```
+<Set Name="camera.parkingSpotId" Target="Atom-Org-1.F1.S8" Time="1424140991624 Value="Car In"/>
+```
+
+######Magnetic Sensor Event Example
+```
+<Set Name="magneticSensor.parkingSpotId" Target="Atom-Org-1.F1.S0" Time="1424140991624" Value="available"/>
+```
+
+##### Taking Actions on things (Example: Area Light, Parking Meter, Digital Signage etc)
+
+This example show how to take actions on Parking Area Lights. We are going to set the intensity of the Parking Area light to 70%.
 

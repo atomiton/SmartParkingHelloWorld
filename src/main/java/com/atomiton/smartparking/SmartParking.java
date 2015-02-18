@@ -126,9 +126,7 @@ public class SmartParking {
 		System.out.println("getOrgs");
 		System.out.println("snapshot");
 		System.out.println("events");
-		System.out.println("updateMeter");
-		System.out.println("updateAreaIntensity");
-		System.out.println("updateDigitalSign");
+		System.out.println("update");
 	}
 
 
