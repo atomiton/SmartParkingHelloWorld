@@ -46,6 +46,21 @@ public class ParkingLotAction {
 		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
 	}
 
+
+	//This method updates the DigitalSign;
+	public static void updateDigitalSignage1(
+			String serverURL, String sid, String version, String label)
+					throws Exception {
+		String pJSON = "{" + 
+				"\"Model\": \"ParkingFloor\", " +
+				"\"ParkingFloor\": { " +
+				"\"sid\": \"" + sid + "\", " +
+				"\"digitalSignage1\": {\"Version\":\"" + version + "\", \"Value\":\"" + label + "\"}}}";
+
+		System.out.println("Changing Signage Label :" + label);
+		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
+	}
+
 	public static void updateParkingMeterPrice(String serverURL, String sid, 
 			String version, String price)
 					throws Exception {
@@ -60,16 +75,16 @@ public class ParkingLotAction {
 	}
 
 	//This method updates the AreaLight;
-	public static void updateAreaLightId(
-			String serverURL, String sid, String version, String areaLightId)
+	public static void updateStallLightPowerState(
+			String serverURL, String sid, String version, String powerState)
 					throws Exception {
 		String pJSON = "{" + 
-				"\"Model\": \"AreaLight\", " +
-				"\"AreaLight\": { " +
+				"\"Model\": \"StallLight\", " +
+				"\"StallLight\": { " +
 				"\"sid\": \"" + sid + "\", " +
-				"\"id\": {\"Version\":\"" + version + "\", \"Value\":\"" + areaLightId + "\"}}}";
+				"\"powerState\": {\"Version\":\"" + version + "\", \"Value\":\"" + powerState + "\"}}}";
 
-		System.out.println("Changing Id :" + areaLightId);
+		System.out.println("Changing Power State :" + powerState);
 		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
 	}
 
@@ -103,6 +118,47 @@ public class ParkingLotAction {
 		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
 		nvPairs.add(new BasicNameValuePair("Command", "read"));
 		nvPairs.add(new BasicNameValuePair("Model", "AreaLight")); //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
+		return getJSON;
+	}
+
+	//Get the current state of the Area Light. This is needed to get the current version of the 
+	//Attribute "intensityLevel" as well as internal Id referred to as SID.
+	public static String getStallLightById(String serverURL, String stallLightId) 
+			throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"id\", \"value\":\"" + stallLightId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+		nvPairs.add(new BasicNameValuePair("Model", "StallLight")); //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
+		return getJSON;
+	}
+
+	/**
+	 * This method gets the ParkingFloor given its Id.
+	 * @param serverURL
+	 * @param floorId
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getParkingFloorById(String serverURL, String floorId) 
+			throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"id\", \"value\":\"" + floorId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+		nvPairs.add(new BasicNameValuePair("Model", "ParkingFloor")); //Model Name is AreaLight
 		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
 		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
 
@@ -145,6 +201,22 @@ public class ParkingLotAction {
 		}
 	}
 
+	//This methods prepares for action on AreaLight
+	public static void actionOnStallLight(String stallLightId, String spotId, String powerState)
+			throws Exception {
+		String psr = getStallLightById(SPConstants.SERVER_URL, stallLightId);
+		if (psr != null) {
+			JSONObject obj = new JSONObject(psr);
+			String sid = obj.getJSONObject("StallLight").getString("sid");
+			String powerStateVersion = ""+obj.getJSONObject("StallLight").getJSONObject("powerState").getInt("Version");
+			System.out.println(sid + "  " + " " + powerStateVersion);
+			String target = spotId+"."+stallLightId;
+			String result = powerState;
+			String uri = "?Command=update&Target=" + target + "&Result=" + result;
+			updateStallLightPowerState(SPConstants.ACTIONS_URL+uri, sid, powerStateVersion, powerState);
+		}
+	}
+
 
 	//This methods prepares for action on Parking Meter
 	public static void actionOnParkingMeter(String pmeterId, String spotId, String newPrice)
@@ -161,22 +233,22 @@ public class ParkingLotAction {
 			updateParkingMeterPrice(SPConstants.ACTIONS_URL+uri, sid, intensityVersion, newPrice);
 		}
 	}
-
-	//This methods prepares for action on AreaLight
-	public static void addMissingAreaLightId(String areaLightId, String spotId, String newIntensity)
+	
+	public static void actionOnDigitalSignage(String floorId, String label)
 			throws Exception {
-		String psr = getAreaLightBySpotId(SPConstants.SERVER_URL, spotId);
+		String psr = getParkingFloorById(SPConstants.SERVER_URL, floorId);
 		if (psr != null) {
-			System.out.println(psr);
 			JSONObject obj = new JSONObject(psr);
-			String sid = obj.getJSONObject("AreaLight").getString("sid");
-			String idVersion = ""+obj.getJSONObject("AreaLight").getJSONObject("id").getInt("Version");
-			System.out.println(sid + "  " + " " + idVersion);
-			String target = spotId+"."+areaLightId;
-			String result = newIntensity;
+			String sid = obj.getJSONObject("ParkingFloor").getString("sid");
+			String labelVersion = ""+obj.getJSONObject("ParkingFloor").getJSONObject("digitalSignLabel1").getInt("Version");
+			System.out.println(sid + "  " + " " + labelVersion);
+			String target = floorId+".digitalSignLabel1";
+			String result = label;
 			String uri = "?Command=update&Target=" + target + "&Result=" + result;
-			updateAreaLightId(SPConstants.ACTIONS_URL+uri, sid, idVersion, areaLightId);
+			updateDigitalSignage1(SPConstants.ACTIONS_URL+uri, sid, labelVersion, label);
 		}
 	}
+
+
 
 }

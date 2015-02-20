@@ -118,6 +118,33 @@ public class SmartParking {
 					}
 					break;
 				}
+				
+				case "updateStallLight": {
+					ParkingLot pl = getSnapshot();
+					Map<String, String> pStallMap = getStallLightMap(pl);
+					String powerState = "off";
+					if (args.length > 1) {
+						powerState = args[1];
+					}
+					Set<String> keys = pStallMap.keySet(); //All the spotIds
+					for (String spotId: keys) {
+						//Change the intensity of all floors one at a time.
+						ParkingLotAction.actionOnStallLight(pStallMap.get(spotId), spotId, powerState);
+					}
+					break;
+				}
+				
+				case "updateDigitalLabel": {
+					ParkingLot pl = getSnapshot();
+					String label = "Lot Full";
+					if (args.length > 1) {
+						label = args[1];
+					}
+					for (ParkingFloor pf: pl.getParkingFloors()) {
+						ParkingLotAction.actionOnDigitalSignage(pf.getFloorInfo().getId(), label);
+					}
+					break;
+				}
 
 				default: {
 					printHelp();
@@ -174,6 +201,25 @@ public class SmartParking {
 	
 	
 	/**
+	 * This method creates a map of Parking Spot where Area Lights are attached.
+	 * @param pl
+	 * @return
+	 */
+	public static Map<String, String> getStallLightMap(ParkingLot pl) {
+		Map<String, String> alMap = new HashMap<String, String>();
+		for (ParkingFloor pf: pl.getParkingFloors()) {
+			for (ParkingSpot ps: pf.getParkingSpots()) {
+				if (ps.getStallLightInfo() != null) { //Is Stall Light attached to the spot?
+					System.out.println(ps.getId() + "---->" + ps.getStallLightInfo().getid());
+					alMap.put(ps.getId(), ps.getStallLightInfo().getid());
+				}
+			}
+		}
+		return alMap;
+	}
+	
+	
+	/**
 	 * This method creates a map of Parking Spot where Parking Meters are attached.
 	 * @param pl
 	 * @return
@@ -210,6 +256,7 @@ public class SmartParking {
 		System.out.println("events");
 		System.out.println("updateLight");
 		System.out.println("updatePrice");
+		System.out.println("updateStallLight");
 	}
 
 
