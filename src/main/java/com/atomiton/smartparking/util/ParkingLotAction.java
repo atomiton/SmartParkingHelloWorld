@@ -88,6 +88,20 @@ public class ParkingLotAction {
 		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
 	}
 
+	//This method updates the AreaLight;
+	public static void updateParkingSpotState(
+			String serverURL, String sid, String version, String state)
+					throws Exception {
+		String pJSON = "{" + 
+				"\"Model\": \"StallLight\", " +
+				"\"StallLight\": { " +
+				"\"sid\": \"" + sid + "\", " +
+				"\"state\": {\"Version\":\"" + version + "\", \"Value\":\"" + state + "\"}}}";
+
+		System.out.println("Changing Parking Spot State :" + state);
+		HttpRequestResponseHandler.sendPut(serverURL, pJSON);
+	}
+
 
 	//Get the current state of the Area Light. This is needed to get the current version of the 
 	//Attribute "intensityLevel" as well as internal Id refered to as SID.
@@ -167,6 +181,30 @@ public class ParkingLotAction {
 	}
 
 
+	/**
+	 * This method gets the ParkingSpot given its Id.
+	 * @param serverURL
+	 * @param floorId
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getParkingSpotById(String serverURL, String spotId) 
+			throws Exception {
+
+		String filterName = 
+				"{\"eq\": {\"target\":\"id\", \"value\":\"" + spotId + "\"} }";
+
+		List<NameValuePair> nvPairs = new ArrayList<NameValuePair>();
+		nvPairs.add(new BasicNameValuePair("Command", "read"));
+		nvPairs.add(new BasicNameValuePair("Model", "ParkingSpot")); //Model Name is AreaLight
+		nvPairs.add(new BasicNameValuePair("FilterName", filterName));
+		String paramString = URLEncodedUtils.format(nvPairs, "utf-8");
+
+		String getJSON = HttpRequestResponseHandler.sendGet(serverURL, paramString);
+		return getJSON;
+	}
+
+
 	//Get the current state of the Area Light. This is needed to get the current version of the 
 	//Attribute "intensityLevel" as well as internal Id refered to as SID.
 	public static String getParkingMeterById(String serverURL, String pmId) 
@@ -214,6 +252,19 @@ public class ParkingLotAction {
 			String result = powerState;
 			String uri = "?Command=update&Target=" + target + "&Result=" + result;
 			updateStallLightPowerState(SPConstants.ACTIONS_URL+uri, sid, powerStateVersion, powerState);
+			
+			//Change the Spot state as well.
+			/*String pss = getParkingSpotById(SPConstants.SERVER_URL, spotId);
+			if (pss != null) {
+				JSONObject obj2 = new JSONObject(pss);
+				String psid = obj2.getJSONObject("ParkingSpot").getString("sid");
+				String stateV = ""+obj.getJSONObject("ParkingSpot").getJSONObject("state").getInt("Version");
+				System.out.println(sid + "  " + " " + stateV);
+				String pstarget = spotId+"."+stallLightId;
+				String psresult = powerState;
+				String psuri = "?Command=update&Target=" + pstarget + "&Result=" + psresult;
+				updateParkingSpotState(SPConstants.ACTIONS_URL+psuri, psid, stateV, powerState);
+			}*/
 		}
 	}
 
@@ -233,7 +284,7 @@ public class ParkingLotAction {
 			updateParkingMeterPrice(SPConstants.ACTIONS_URL+uri, sid, intensityVersion, newPrice);
 		}
 	}
-	
+
 	public static void actionOnDigitalSignage(String floorId, String label)
 			throws Exception {
 		String psr = getParkingFloorById(SPConstants.SERVER_URL, floorId);
