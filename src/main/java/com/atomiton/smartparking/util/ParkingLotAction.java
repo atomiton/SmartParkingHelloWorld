@@ -68,7 +68,7 @@ public class ParkingLotAction {
 				"\"Model\": \"ParkingMeter\", " +
 				"\"ParkingMeter\": { " +
 				"\"sid\": \"" + sid + "\", " +
-				"\"parkignMeterLabel\": {\"Version\":\"" + version + "\", \"Value\":\"" + price + "\"}}}";
+				"\"parkingMeterLabel\": {\"Version\":\"" + version + "\", \"Value\":\"" + price + "\"}}}";
 
 		System.out.println("Changing Price :" + price);
 		HttpRequestResponseHandler.sendPut(serverURL, pJSON);

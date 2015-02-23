@@ -32,6 +32,7 @@ import com.atomiton.smartparking.model.ParkingSpot;
 import com.atomiton.smartparking.util.HttpRequestResponseHandler;
 import com.atomiton.smartparking.util.ParkingLotAction;
 import com.atomiton.smartparking.util.SPConstants;
+import com.atomiton.smartparking.util.SPUtil;
 import com.atomiton.smartparking.util.WebSocketListener;
 
 
@@ -54,6 +55,9 @@ public class SmartParking {
 		try {
 
 			System.out.println("Welcome to Smart Parking Hello World Application.");
+			String str = "<Set Name=\"magneticSensor.parkingSpotId\" Target=\"Atom-Org-1.F1.S0\" Time=\"1424140991624\" Value=\"available\"/>";
+			SPUtil.parseMSEvent(str);
+			//return;
 			if (args.length > 0) {
 				switch (args[0]) {
 				case "getOrgs": {
