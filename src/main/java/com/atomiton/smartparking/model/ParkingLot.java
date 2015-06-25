@@ -12,6 +12,8 @@ public class ParkingLot {
     private Organization organization;
     @JsonProperty("parkingFloors")
     private List<ParkingFloor> parkingFloors = new ArrayList<ParkingFloor>();
+    @JsonProperty("actionCounter")
+    int actionCounter;
     
     /**
      * 
@@ -52,7 +54,15 @@ public class ParkingLot {
     public void setParkingFloors(List<ParkingFloor> parkingFloors) {
         this.parkingFloors = parkingFloors;
     }
-
     
+    @JsonProperty("actionCounter")
+    public void setactionCounter(int c) {
+    	actionCounter = c;
+    }
+    
+    @JsonProperty("actionCounter")
+    public int getactionCounter() {
+    	return (actionCounter);
+    }
 
 }

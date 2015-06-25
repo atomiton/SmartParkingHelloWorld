@@ -170,7 +170,7 @@ public class SmartParking {
 				SPConstants.SERVER_URL, 
 				SPConstants.SP_ORG_PARAMS);
 		JSONObject obj = new JSONObject(output);
-		System.out.println("Name is: " + obj.getJSONObject("Organization").getJSONObject("Name").getString("Value"));
+		//System.out.println("Name is: " + obj.getJSONObject("Organization").getJSONObject("AddressLocation1").getString("Value"));
 		String id =  obj.getJSONObject("Organization").getJSONObject("id").getString("Value");
 		System.out.println("Org Id is: " + id);
 		return id;

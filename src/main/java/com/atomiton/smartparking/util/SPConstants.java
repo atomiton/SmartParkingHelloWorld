@@ -21,15 +21,15 @@ package com.atomiton.smartparking.util;
  */
 public class SPConstants {
 	//Web sockets to recieve events.
-	public static String SP_EVENTS_WSURL = "ws://tqldev.atomiton.com:8090/fid-sensors";
+	public static String SP_EVENTS_WSURL = "ws://tql.atomiton.com:8090/fid-sensors";
 	
-	public static String SERVER_URL = "http://tqldev.atomiton.com:8080/fid-smartparking";
+	public static String SERVER_URL = "http://tql.atomiton.com:8080/fid-smartparking";
 	
 	public static String SP_ORG_PARAMS = "Command=readAll&Model=Organization";
 	
-	public static String SNAPSHOT_URL = "http://tqldev.atomiton.com:8080/fid-ParkingResoures/res/";
+	public static String SNAPSHOT_URL = "http://tql.atomiton.com:8080/fid-ParkingResources/res/";
 	
-	public static String ACTIONS_URL = "http://tqldev.atomiton.com:8080/fid-actions";
+	public static String ACTIONS_URL = "http://tql.atomiton.com:8080/fid-actions";
 	
 	public static String SNAPSHOT_FILENAME = "splatest.json";
 }
