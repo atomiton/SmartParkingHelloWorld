@@ -1,0 +1,56 @@
+<div style="width:100%;height:100%;overflow-x:auto;overflow-y:auto;border:2px solid #ccc;padding:5px;" ng-controller = "simulatorController">
+    <div class="caseDescriptionHeadMain rb18bold">
+        <p>Smart City – Smart Parking Case Description</p>
+    </div>
+    <div class="caseDescriptionsecond rb16bold">
+        <p style="color:#0f97f9;">General Background</p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg">
+        <p>This is a multi-story parking structure with 4 floors, and a total of <span class="highLightYellow">1,280</span> parking spaces, evenly distributed on each floor. It operates 24x7. It is a fairly busy parking lot, with the throughput rate of between <span class="highLightYellow">1,130 – 4,170</span> cars coming and leaving each day.
+
+            The parking spots are demarcated. However, parking meters are shared. There is 1 meter for every 20 parking spots on the floor.
+
+            Sensors have been deployed to determine parking occupancy. They are:<br/>
+        <p style="margin-left:10px;"> • Magnetic sensors:  1 for each parking space, total of 1,280<br/>
+            •	 Cameras: 1 for every 8 parking space Lights in the parking lot include:<br/>
+            •	 Individual stall lights: 1 for each space, total of 1,280<br/>
+            •	 Area lights: 36 (32 in the aisles, 4 near elevators) on each floor, 12 in stairways</p><br/>
+
+        Two digital signs are placed on each floor. In addition, there is 1 digital signage at the entrance of the parking structure.<br/>
+        </p>
+        <p style="text-align:center;color:#2badad;">See picture below for illustration</p>
+        <p style="margin: 0 auto;height:400px;width: 550px;"><img src="images/casedesription.png" width="540" height="390" style="margin: 0 auto;"/></p>
+    </div>
+    <div class="caseDescriptionsecond rb16bold">
+        <p style="color:#0f97f9;">Sensor/Device logic</p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg">
+        <p>Each magnetic sensor can detect if there is a car in the particular parking spot. It sends the message which contains the state (either “available” or “occupied”) at a fixed frequency <span class="highLightYellow"> of once every 10-15 seconds,</span> whether or not there is a change in the state. Magnetic sensor usually has accuracy rate of 90% at telling if a parking spot is occupied.</p>
+        <p>Camera has multiple purposes. One of them is to detect parking events as second validation of the spot occupancy. From each camera, you would get two types of events, indicating car coming, or car leaving.  Because each camera covers 8 parking spot, such events will come along with the parking spot ID. Camera only sends events when they are detected. It does not have a fixed frequency. Camera has about 80% accuracy at detecting parking events.</p>
+        <p>Combining data from magnetic sensor and camera can give an accuracy rate of 98% in determine occupancy at any parking spot.</p>
+    </div>
+    <div class="caseDescriptionsecond rb16bold">
+        <p style="color:#4f81bd;">Your Story and Your Application</p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg" style="color:#4e81d4;">
+        <p>Use this simulated parking facility in any part of your application, combine with other entities and create your own stories!</p>
+        <p>We have created a sample story for youbased on our own deployment experience in smart cities worldwide – and you are encouraged to use it:</p>
+        <p>"As an IoT developer I care about business logic to make the parking lot efficient. My goals include saving energy, providing visibility to consumers as well as maximizing revenue for the service operators. For example, following are some of my typical business logic to implement:</p>
+        <p style="margin-left:10px;">1.Area lights intensity levelchange based on parking occupancy rate on each floor:</p>
+        <p style="padding-left:30px;">•The intensity % of all area lights on a particular floor = the parking occupancy rate on that floor<br/>
+            •Exception: area lights intensity never goes below 10%
+        </p>
+        <p style="margin-left:10px;">2.Turn stall lights on/off based on state of the parking spot</p>
+        <p style="padding-left:30px;">•For spots where no car is parked, turn the stall lights off<br/>
+            •For spots where a car is parked, turn the stall lights on
+        </p>
+        <p style="margin-left:10px;">3.Flexible (tiered) parking rate by floor, depending on parking occupancy rate of that floor</p>
+        <p style="padding-left:30px;">•	After a person parked, he/she will go to the shared area meter to pay for the specific spot, with a spot #<br/>
+            •	The parking rate on the meters must be set between $1~ $6 per hour, based on the occupancy rate of each floor at any time.<br/>
+            •	All the area meters on the same floor carry the same price. If the floor occupancy rate is 0%, the price is $1, of the floor occupancy rate is 100%, the price is $6. Everything else is linear in between $1 and $6.
+        </p>
+        <p style="margin-left:10px;">4.Digital signage must show the occupancy rate and meter price on each floor."
+        </p>
+        <p>Feel free to come up with and add your own business logic, and use the APIs to make the parking lot a smart system. Keep in mind that the more “actions” you take(e.g. adjusting lights, changing meters), the more your application is responsive and attractive!.</p>
+    </div>
+</div>

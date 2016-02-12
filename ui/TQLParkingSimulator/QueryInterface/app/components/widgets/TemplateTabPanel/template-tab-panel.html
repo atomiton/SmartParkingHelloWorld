@@ -1,0 +1,7 @@
+<tabset style="height:100% !important;"> 
+<tab select="select()" ng-repeat=" tab in selectedTabs" active="$last">
+	<tab-heading> <i class=""></i> {{tab.name}}<i class="icon-close tabclose" ng-click="tabClose(tab);"></i></tab-heading>
+	<ng-include src=tab.perspectives[0].templateUrl></ng-include> 
+</tab>
+</tabset>
+

@@ -1,0 +1,19 @@
+[{
+		"title" : "Try TQL",
+		"linkURL" : "/home"
+	},{
+		"title" : "TQL Studio",
+		"linkURL" : "/tql_studio"
+	},{
+		"title" : "IoT Simulator",
+		"linkURL" : "/iot_simulator"
+	},{
+		"title" : "Docs",
+		"linkURL" : "/docs"
+	},{
+		"title" : "Forum",
+		"linkURL" : "/forum"
+	},{
+		"title" : "Support",
+		"linkURL" : "/support"
+	}]

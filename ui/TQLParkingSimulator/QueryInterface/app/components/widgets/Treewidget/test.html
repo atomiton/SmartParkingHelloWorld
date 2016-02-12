@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tree Structure</title>
+  <script src="../../../ext_libs/angular/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/tree-control.css">
+  <!-- link for CSS when using the tree as an attribute -->
+  <link rel="stylesheet" type="text/css" href="css/tree-control-attribute.css">
+  <script src="tree.js"></script>
+  <script src="../ngCkEditor/ckeditor.js"></script>
+  <script src="../ngCkEditor/ng-ckeditor.js"></script>
+  <script src="../mq.widget.module.js"></script>
+  <script src="mq.widget.Tree.js"></script>
+  
+ </head>
+<body ng-app="treeApp">
+  <div ng-controller="treeController">
+ <treecontrol class="tree-classic"
+   tree-model="dataForTheTree"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1">
+   employee: {{node.name}} age {{node.age}}
+</treecontrol>
+<div treecontrol class="tree-classic"
+   tree-model="dataForTheTree"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1">
+   employee: {{node.name}} age {{node.age}}
+</div>
+  
+</div>
+</body>
+</html>

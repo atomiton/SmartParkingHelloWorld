@@ -1,0 +1,10 @@
+<div ng-controller="forumController">
+    <div class="tqlhead forum">
+        <div class="logo"><img src="images/atomiton_header.png" width="93" height="50" /></div>
+        <ul class="tqlnav pull-right">
+
+            <li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+
+        </ul>
+    </div>
+</div>

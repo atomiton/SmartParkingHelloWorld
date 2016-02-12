@@ -1,0 +1,48 @@
+
+<!-- <div id="myDiv" style="height:100%; ">
+<text-display text-to-display="tabContentText"></text-display>
+<ul class="">
+
+<li ng-repeat="tab in tabs" ><a data-toggle="tab">{{tab.type}}</a></li>
+</ul> 
+</div> -->
+<!--
+<div class="results" ng-show="tabs.length > 0" us-spinner spinner-key="{{uniqueId + 'result-panel'}}">
+
+	<div class="header"> Results
+	<i class="pull-right icon-maximize" ng-click="maximize_result($event);"></i>
+	<i class="pull-right icon-restore"  ng-click="restore_result($event);"></i> 
+	<i class="pull-right icon-minimize" ng-click="minimize_result($event);"></i> 
+	<i class="icon-ban pull-right" ng-click="clear();" tooltip="Clear results" tooltip-placement="bottom"></i>
+	</div>
+
+	<div class="tabbable tabs-below tqlsettings1" style="padding:2px!important;" >
+		<div class="tab-content topmargin resulttabs" style="padding:0px;">
+			<div class="tab-pane active"><text-display text-to-display="tabContentText" is-json-tree="isJsonTree"></text-display></div>
+			<ul class="nav nav-tabs resulttabs" >
+				<li ng-repeat="tab in tabs" ng-class="{'active' : tab.default==true}"><a data-toggle="tab"
+					ng-click="tabClicked(tab);">{{tab.type}}</a></li>
+			</ul>
+		</div>
+    </div>
+	</div>-->
+
+<div class="results" us-spinner spinner-key="resultkey" >
+
+    <div class="header"> Results
+        <i class="pull-right icon-maximize" ng-click="maximize_result($event);"></i>
+        <i class="pull-right icon-restore"  ng-click="restore_result($event);"></i>
+        <i class="pull-right icon-minimize" ng-click="minimize_result($event);"></i>
+        <i class="icon-ban pull-right"      ng-click="clear();" tooltip="Clear results" tooltip-placement="bottom"></i>
+    </div>
+
+    <div class="tabbable tabs-below tqlsettings1">
+        <div class="tab-content topmargin resulttabs" style="padding:0px;">
+            <div class="tab-pane active">
+			<!--<pre>{{tabContentText}}</pre>-->
+                <text-display text-to-display="tabContentText">
+                </text-display>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<section name= "All Floors"
+	style="margin: 0 auto; height: calc(100% -   60px); width: 100%; overflow-y: auto; float: left;">
+	<!-- <div style="width:100%;height:100%;margin-top:15px;"><img src="images/all.png"/></div> -->
+	<div
+		ng-repeat="floor in parkingData.parkingFloors" style="width : 50%; float:left;">
+		<div class="floordetailsBox">
+			<div class="floorboxInner">
+				<div class="rb14bold title">Floor
+					{{floor.floorInfo.floorNumber}}</div>
+				<div class="floordesc rb12reg">Lorem ipsum dolor sit amet,
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+					labore et dolore magna aliqua.</div>
+				<div class="floordevices">
+					<div class="deviceRow1">
+						<div class="deviceColumm1 rb14reg">
+							<img src="images/light_on.png" width="13" height="15"
+								style="margin-right: 5px;" />StallLights({{floor.summary.stallLightCount}}:?
+							%)
+						</div>
+						<div class="deviceColumm2 rb14reg">
+							<img src="images/Layer-5horizontal.png" width="30" height="10"
+								style="margin-right: 5px;" />Signage({{floor.summary.signageCount
+							}}:? %)
+						</div>
+					</div>
+					<div class="deviceRow2">
+						<div class="deviceColumm1 rb14reg">
+							<img src="images/Layer-6.png" width="13" height="20"
+								style="margin-right: 5px;" />Meters({{floor.summary.meterCount}}:?%)
+						</div>
+						<div class="deviceColumm2 rb14reg">
+							<img src="images/camera.png" style="margin-right: 10px;" />Camera({{floor.summary.cameraCount}}:?%)
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

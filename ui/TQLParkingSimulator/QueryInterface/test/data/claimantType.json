@@ -1,0 +1,162 @@
+[
+    {
+        "claimantTypeDesc": "Medical Only",
+        "insuranceType": 2,
+        "claimantTypeCode": 1
+    },
+    {
+        "claimantTypeDesc": "Indemnity",
+        "insuranceType": 2,
+        "claimantTypeCode": 2
+    },
+    {
+        "claimantTypeDesc": "Future medical",
+        "insuranceType": 2,
+        "claimantTypeCode": 3
+    },
+    {
+        "claimantTypeDesc": "Pending",
+        "insuranceType": 2,
+        "claimantTypeCode": 4
+    },
+    {
+        "claimantTypeDesc": "Record Only",
+        "insuranceType": 2,
+        "claimantTypeCode": 5
+    },
+    {
+        "claimantTypeDesc": "TTD/TPD",
+        "insuranceType": 2,
+        "claimantTypeCode": 6
+    },
+    {
+        "claimantTypeDesc": "Indemnity",
+        "insuranceType": 2,
+        "claimantTypeCode": 6
+    },
+    {
+        "claimantTypeDesc": "TD",
+        "insuranceType": 2,
+        "claimantTypeCode": 6
+    },
+    {
+        "claimantTypeDesc": "Death",
+        "insuranceType": 2,
+        "claimantTypeCode": 7
+    },
+    {
+        "claimantTypeDesc": "PTD",
+        "insuranceType": 2,
+        "claimantTypeCode": 8
+    },
+    {
+        "claimantTypeDesc": "Total PD",
+        "insuranceType": 2,
+        "claimantTypeCode": 8
+    },
+    {
+        "claimantTypeDesc": "Major PD",
+        "insuranceType": 2,
+        "claimantTypeCode": 9
+    },
+    {
+        "claimantTypeDesc": "Settlement",
+        "insuranceType": 2,
+        "claimantTypeCode": 9
+    },
+    {
+        "claimantTypeDesc": "Minor PD",
+        "insuranceType": 2,
+        "claimantTypeCode": 10
+    },
+    {
+        "claimantTypeDesc": "Extended Benefits",
+        "insuranceType": 2,
+        "claimantTypeCode": 10
+    },
+    {
+        "claimantTypeDesc": "Future Medical I",
+        "insuranceType": 2,
+        "claimantTypeCode": 11
+    },
+    {
+        "claimantTypeDesc": "Awards",
+        "insuranceType": 2,
+        "claimantTypeCode": 11
+    },
+    {
+        "claimantTypeDesc": "Future Medical II",
+        "insuranceType": 2,
+        "claimantTypeCode": 12
+    },
+    {
+        "claimantTypeDesc": "Inactive - Pending Bills",
+        "insuranceType": 2,
+        "claimantTypeCode": 12
+    },
+    {
+        "claimantTypeDesc": "Inactive - Statutory Time Hold",
+        "insuranceType": 2,
+        "claimantTypeCode": 13
+    },
+    {
+        "claimantTypeDesc": "Future Medical III",
+        "insuranceType": 2,
+        "claimantTypeCode": 13
+    },
+    {
+        "claimantTypeDesc": "Indemnity No Lost Time",
+        "insuranceType": 2,
+        "claimantTypeCode": 14
+    },
+    {
+        "claimantTypeDesc": "Indemnity-No Comp Lost Time",
+        "insuranceType": 2,
+        "claimantTypeCode": 14
+    },
+    {
+        "claimantTypeDesc": "Future Medical IIII",
+        "insuranceType": 2,
+        "claimantTypeCode": 15
+    },
+    {
+        "claimantTypeDesc": "Need Info/Undetermined",
+        "insuranceType": 2,
+        "claimantTypeCode": 16
+    },
+    {
+        "claimantTypeDesc": "Maintenance",
+        "insuranceType": 2,
+        "claimantTypeCode": 17
+    },
+    {
+        "claimantTypeDesc": "Denied-Appealed",
+        "insuranceType": 2,
+        "claimantTypeCode": 18
+    },
+    {
+        "claimantTypeDesc": "Survivor-Spouse",
+        "insuranceType": 2,
+        "claimantTypeCode": 19
+    },
+    {
+        "claimantTypeDesc": "Survivor-Spouse and Dependents",
+        "insuranceType": 2,
+        "claimantTypeCode": 20
+    },
+    {
+        "claimantTypeDesc": "Survivor-Dependent",
+        "insuranceType": 2,
+        "claimantTypeCode": 21
+    },
+    {
+        "claimantTypeDesc": "Survivor-Dependents Disabled",
+        "insuranceType": 2,
+        "claimantTypeCode": 22
+    },
+    {
+        "claimantTypeDesc": "Wage Differential",
+        "insuranceType": 2,
+        "claimantTypeCode": 23
+    }
+]

@@ -1,0 +1,210 @@
+[
+    {
+        "name":"Models",
+        "type":"model",
+        "icon":"",
+		"isOpen": true,
+        "perspectives":[
+            {
+                "name":"Repository",
+                "type":"repository",
+                "templateUrl": "modules/Queries/views/queryTemplate1.html",
+				"leftTemplateUrl":"templates/tabs.html",
+                "default":true,
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                ],
+                "resultPanel":[
+
+                ]
+            },
+            {
+                "name":"Heirarchy",
+                "type":"heirarchy",
+                "templateUrl": "modules/Queries/views/queryTemplate1.html",
+                "default":"",
+
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                ],
+                "resultPanel":[
+
+                ]
+            }
+
+        ]
+    },
+    {
+        "name":"Queries",
+        "type":"query",
+        "icon":"",
+        
+        "perspectives":[
+            {
+                "name":"qPerspective1",
+                "type":"qPerspective1",
+                "default":true,
+                "templateUrl": "modules/Queries/views/queryTemplate1.html",
+		        "actions":[[{
+		            "name" : "Save",
+		            "event" : "model:save",
+		            "icon" : "icon-save"
+		        },{
+		            "name" : "Save As",
+		            "event" : "model:saveas",
+		            "icon" : "icon-saveas"
+		        }],
+		            [{
+		                "name" : "Run",
+		                "event" : "model:run",
+		                "icon" : "icon-run"
+		            },{
+		                "name" : "Execute",
+		                "event" : "model:execute",
+		                "icon" : "icon-run red"
+		            }],
+		            [{
+		                "name" : "Configure",
+		                "event" : "model:configure",
+		                "icon" : "icon-configure"
+		            }]],
+		        "resultPanel": [ {
+		            "type" : "Raw",
+		            "default" : true,
+		            "event" : "query:formatRaw"
+		        }, {
+		            "type" : "Tree",
+		            "default" : false,
+		            "event" : "query:formatTree"
+		        }, {
+		            "type" : "Json",
+		            "default" : false,
+		            "event" : "query:formatJson"
+		        } ]
+            },{
+                "name":"qPerspective2",
+                "type":"qPerspective2",
+                "default":true,
+                "templateUrl": "modules/Queries/views/queryTemplate1.html",
+		        "actions":[[{
+		            "name" : "Save",
+		            "event" : "model:save",
+		            "icon" : "icon-save"
+		        },{
+		            "name" : "Save As",
+		            "event" : "model:saveas",
+		            "icon" : "icon-saveas"
+		        }],
+		            [{
+		                "name" : "Run",
+		                "event" : "model:run",
+		                "icon" : "icon-run"
+		            },{
+		                "name" : "Execute",
+		                "event" : "model:execute",
+		                "icon" : "icon-run red"
+		            }],
+		            [{
+		                "name" : "Configure",
+		                "event" : "model:configure",
+		                "icon" : "icon-configure"
+		            }]],
+		        "resultPanel": [ {
+		            "type" : "Raw",
+		            "default" : true,
+		            "event" : "query:formatRaw"
+		        }, {
+		            "type" : "Tree",
+		            "default" : false,
+		            "event" : "query:formatTree"
+		        }, {
+		            "type" : "Json",
+		            "default" : false,
+		            "event" : "query:formatJson"
+		        } ]
+            }
+        ]
+
+    },
+    {
+        "name":"Policies",
+        "type":"policy",
+        "icon":"",
+        "perspectives":[
+            {
+                "name":"polPerspective1",
+                "type":"polPerspective1",
+                "default":true,
+                "templateUrl":"modules/Queries/views/queryTemplate1.html",
+		        "actions":[[{
+		            "name" : "Save",
+		            "event" : "model:save",
+		            "icon" : "icon-save"
+		        },{
+		            "name" : "Save As",
+		            "event" : "model:saveas",
+		            "icon" : "icon-saveas"
+		        }],
+		            [{
+		                "name" : "Run",
+		                "event" : "model:run",
+		                "icon" : "icon-run"
+		            },{
+		                "name" : "Execute",
+		                "event" : "model:execute",
+		                "icon" : "icon-run red"
+		            }],
+		            [{
+		                "name" : "Configure",
+		                "event" : "model:configure",
+		                "icon" : "icon-configure"
+		            }]],
+		        "resultPanel": [ {
+		            "type" : "Raw",
+		            "default" : true,
+		            "event" : "query:formatRaw"
+		        }, {
+		            "type" : "Tree",
+		            "default" : false,
+		            "event" : "query:formatTree"
+		        }, {
+		            "type" : "Json",
+		            "default" : false,
+		            "event" : "query:formatJson"
+		        } ]
+		            }
+		        ]
+
+    }
+
+]

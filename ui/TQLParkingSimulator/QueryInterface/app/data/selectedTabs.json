@@ -1,0 +1,63 @@
+ {"data" : 
+ [{
+	"id":"123",
+	"children":[],
+	"perspective":"qPerspective1",
+	"selectedResultPanel":"",
+     "active":true,
+	
+	"config":{
+		"type":"websocket",
+		"url":"ws://192.241.194.116:8080/fid-pulseprws",
+		"method":"",
+		"data":""
+	},
+	"data":"{\"command\":\"get\",\"target\":\"widgetSettings\"}",
+	"name":"Queries",
+    "type":"query",
+    "icon":"",
+     "actions":[[{
+                      		"name" : "Save",
+                      		"event" : "model:save",
+                      		"icon" : "icon-save"
+                      	},{
+                      		"name" : "Save As",
+                      		"event" : "model:saveas",
+                      		"icon" : "icon-saveas"
+                      	}],
+                      	[{
+                      		"name" : "Run",
+                      		"event" : "model:run",
+                      		"icon" : "icon-run"
+                      	},{
+                      		"name" : "Execute",
+                      		"event" : "model:execute",
+                      		"icon" : "icon-run red"
+                      	}],
+                      	[{
+                      		"name" : "Configure",
+                      		"event" : "model:configure",
+                      		"icon" : "icon-configure"
+                      	}]],
+    "resultPanel": [ {
+				"type" : "Raw",
+				"default" : true,
+				"event" : "query:formatRaw"
+			}, {
+				"type" : "Tree",
+				"default" : false,
+				"event" : "query:formatTree"
+			}, {
+				"type" : "Json",
+				"default" : false,
+				"event" : "query:formatJson"
+			} ],
+    "templateUrl": "modules/Queries/views/queryTemplate1.html",
+    "perspectives":[{
+            "name":"qPerspective1",
+            "type":"qPerspective1",
+            "templateUrl": "templates/Queries/queryTemplate1.html",
+            "default":true        
+        }]
+}]
+}

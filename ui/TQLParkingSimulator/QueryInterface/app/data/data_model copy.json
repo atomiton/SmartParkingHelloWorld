@@ -1,0 +1,112 @@
+[
+
+
+    {
+        "name":"namespace1",
+        "type":"query",
+
+        "children":[
+            {
+
+                "name":"sub-namespace1",
+                "type":"query",
+                "children":[
+                    {
+                        "id":"123",
+                        "name":"Light",
+                        "type":"query",
+                        "children":[],
+                        "perspective":"qPerspective1",
+                        "selectedResultPanel":"",
+
+                        "config":{
+                                "type":"http",
+                                "url":"http://gdata.youtube.com/feeds/api/playlists/56D792A831D0C362/?v=2&alt=json&feature=plcp",
+                                "method":"GET",
+                                "data":""
+                        },
+                        "data":""
+
+
+                    },
+                    {
+                        "id":"456",
+                        "name":"Parking",
+                        "type":"query",
+                        "children":[],
+                        "perspective":"qPerspective1",
+                        "selectedResultPanel":""
+                    },
+                    {
+                        "id":"789",
+                        "name":"Traffic",
+                        "type":"query",
+                        "children":[],
+                        "perspective":"qPerspective1",
+                        "selectedResultPanel":""
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"namespace2",
+        "type":"policy",
+        "children":[
+            {
+                "name":"sub-namespace2",
+                "type":"policy",
+                "children":[
+                    {
+                        "id":"111",
+                        "type":"policy",
+                        "name":"Traffic",
+                        "perspective":"polPerspective",
+                        "children":[],
+                        "selectedResultPanel":"",
+                        "config":{
+                            "type":"http",
+                            "url":"http://gdata.youtube.com/feeds/api/playlists/56D792A831D0C362/?v=2&alt=json&feature=plcp",
+                            "method":"GET",
+                            "data":""
+                        },
+                        "data":""
+
+
+                    },
+                    {
+                        "id":"222",
+                        "type":"policy",
+                        "name":"Parking",
+                        "perspective":"polPerspective",
+                        "children":[],
+                        "selectedResultPanel":"",
+                        "config":{
+                            "type":"http",
+                            "url":"http://gdata.youtube.com/feeds/api/playlists/56D792A831D0C362/?v=2&alt=json&feature=plcp",
+                            "method":"GET",
+                            "data":""
+                        },
+                        "data":""
+                    },
+                    {
+                        "id":"333",
+                        "type":"policy",
+                        "name":"Light",
+                        "perspective":"polPerspective",
+                        "children":[],
+                        "selectedResultPanel":"",
+                        "config":{
+                            "type":"http",
+                            "url":"http://gdata.youtube.com/feeds/api/playlists/56D792A831D0C362/?v=2&alt=json&feature=plcp",
+                            "method":"GET",
+                            "data":""
+                        },
+                        "data":""
+                    }
+
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,29 @@
+<div style="width:100%;height:100%;overflow-x:auto;overflow-y:auto;" ng-controller = "docController">
+    <div class="eventFirstrow rb16bold">
+        <p>Events from Smart Parking Lot. All the events are published on the websockets.</p>
+    </div>
+    <div class="eventSecondrow rb14reg">
+        <div class="eventTable">
+            <div class="eventHead">
+                <div class="col1 colorRed left10 ">Event Description</div>
+                <div class="col2 colorRed left10">Event Message</div>
+            </div>
+            <div class="eventRow">
+            <div class="col1 left10" style="width:50%;">Magnetic Sensor Events</div>
+           
+            <div class="col2 left10" style="width:50%;">&lt;Set Name="magneticSensor.parkingSpotId" Target="Atom-Org-1.F1.S89" Time="1424386839965" Value="available"/&gt;<br/>
+               <span class="eventStyle">Target ID Format is:</span> &lt;OrgId&gt;.&lt;FloorId&gt;.&lt;SpotId&gt;<br/>
+               <span class="eventStyle">Possible Values are:</span> available / occupied
+            </div>
+            </div>
+            <div class="eventRow">
+                <div class="col1 left10" style="width:50%;">Camera Events</div>
+                <div class="col2 left10" style="width:50%;"> &lt;Set Name=”camera.parkingSpotId” Target="Atom-Org-1.F1.S8” Time=”1423096092887” Value=”Car In” &gt;<br/>
+                    <span class="eventStyle">Target ID Format is:</span><br/>
+                    &lt;OrgId&gt;.&lt;FloorId&gt;.&lt;SpotId&gt;<br/>
+                    <span class="eventStyle">Possible Values are:</span> Car In / Car Out
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

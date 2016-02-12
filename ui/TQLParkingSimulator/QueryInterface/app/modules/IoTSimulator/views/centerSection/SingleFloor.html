@@ -1,0 +1,83 @@
+<div name="Single Floor">
+<section class="rightSectiontwo">
+    <div class="lightdetails rb14reg">
+        <div class="lightinnerdiv1">
+            <input type="checkbox" ng-model="allAssetsCheckboxModel"  />
+            <div class="data">All</div>
+        </div>
+        <div class="lightinnerdiv1">
+            <input type="checkbox" style="margin-right:5px;"  ng-model="areaLightsCheckboxModel"/>
+            <span><img src="images/Layer-7.png"  width="15" height="15" style="margin-right:2px;"/></span>
+            <div class="data pull-right">Area Lights({{activeFloor.summary.areaLightCount}})</div>
+        </div>
+        <div class="lightinnerdiv1">
+            <input type="checkbox" style="margin-right:5px;"ng-model="stallLightsCheckboxModel"/>
+            <span><img src="images/light_on.png" width="13" height="15" style="margin-right:2px;margin-top:5px;"/></span>
+            <div class="data pull-right">Stall Lights({{activeFloor.summary.stallLightCount}})</div>
+        </div>
+        <div class="lightinnerdiv1">
+            <input type="checkbox" style="margin-right:5px;" ng-model="digitalSignagesCheckboxModel"/>
+            <span><img src="images/Layer-5horizontal.png" width="30" height="10" style="margin-right:2px;padding-top:3px;"/></span>
+            <div class="data pull-right">Signage({{activeFloor.summary.signageCount}})</div>
+        </div>
+        <div class="lightinnerdiv1">
+            <input type="checkbox" style="margin-right:5px;" ng-model="metersCheckboxModel"/>
+            <span><img src="images/Layer-6.png"  width="15" height="20" style="margin-right:2px;margin-top:3px;"/></span>
+            <div class="data pull-right">Meters({{activeFloor.summary.meterCount}})</div>
+        </div>
+        <div class="lightinnerdiv1">
+            <input type="checkbox" style="margin-right:5px;" ng-model="camerasCheckboxModel"/>
+            <span><img src="images/camera.png" style="margin-right:2px;padding-top:4px;"/></span>
+            <div class="data pull-right">Camera({{activeFloor.summary.cameraCount}})</div>
+        </div>
+    </div>
+</section>
+    <section class="rightSectionthree">
+        <div class="selection pull-right">
+            <i class="zoomSlider slider"></i>
+           <i class="icon-search highlight" ng-click="searchClick($event)"></i>
+            <i class="icon-ban" ng-click="banClick($event);collapseSearch();"></i>
+        </div>
+    </section>
+    <section style="margin: 0 auto;height: calc(100% - 130px);width: 100%;overflow-y: auto;overflow-x:auto;position: relative;float:left;">
+        <div class="search_summary" id="searchSummary">
+            <div class="search_inner">
+                <div class="rb16reg">SUMMARY</div>
+                <div class="search_details">
+                    <div class="rb12reg details_heading">GENERAL INFO<span class="line pull-right"></span></div>
+                    <div class="rb11reg innerdata">Floors: {{parkingData.parkingFloors.length}}</div>
+                    <div class="rb11reg innerdata">Spaces:1280</div>
+                    <div class="rb11reg innerdata">Hours:24,7days a week</div>
+                    <div class="rb11reg innerdata">Meter:64(1 meter machine for every 20 parking spaces)</div>
+                </div>
+                <div class="search_details">
+                    <div class="rb12reg details_heading">SENSORS<span class="line pull-right"></span></div>
+                    <div class="rb11reg innerdata">Magnetic Sensors:1280 total</div>
+                    <div class="rb11reg innerdata">Cameras:180<br/>
+                        1 for every 8parking space(160),<br/>
+                        cameras at entry(4),<br/>
+                        Ramps(6),<br/>
+                        Stairways(6),<br/>
+                        Elevators(4)<br/>
+                    </div>
+                </div>
+                <div class="search_details">
+                    <div class="rb12reg details_heading">LIGHTS<span class="line pull-right"></span></div>
+                    <div class="rb11reg innerdata">Stall lights:1,280</div>
+                    <div class="rb11reg innerdata">Area Lights:156<br/>
+                        Aisles(32)<br/>
+                        Near Elevators(4 Per Floor)<br/>
+                        Stairways(12)<br/>
+                    </div>
+                </div>
+                <div class="search_details">
+                    <div class="rb12reg details_heading">OTHER<span class="line pull-right"></span></div>
+                    <div class="rb11reg innerdata" style="float:left;">Digital Signage:1 outside at entry,2 on each Floor,total of 9</div>
+                </div>
+            </div>
+        </div>
+
+         <!-- class = "singleFloorCanvas" -->
+         <canvas id="myCanvas" ng-init = "showFirstFloorOnCanvasLoad()" width="1177" height="3000"></canvas>
+    </section>
+</div>

@@ -1,0 +1,87 @@
+<div ng-controller="docController" style="width:100%;height:100%;">
+    <div class="tqlhead docs">
+        <div class="logo"><img src="images/atomiton_header.png" width="93" height="50" /></div>
+        <ul class="tqlnav pull-right">
+
+            <li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+            <li ng-click="supportClick()"><a href="">Support</a></li>
+        </ul>
+    </div>
+    <div class="tql-docsleftSection">
+        <!--<section class="search_section">
+            <!--<searchbox></searchbox>-->
+            <!--<div class="collapse_button"><button type="button" class="btn btn-primary btn-lg active"ng-click="collapse()"><i class="icon-toggle"></i></button></div>
+            <div class="search_input"><input type="text" class="form-control" placeholder="Search..."></input></div>
+
+        </section>-->
+        <div class="accordion_left">
+            <custom-accordian data="data" trees="trees" ontreeclick="clickedtree(node)"></custom-accordian>
+        </div>
+
+
+
+    </div>
+   <div class="tql-docsrightSection">
+        <div class="docInner">
+            <div class="docHeader rb24bold">{{headerName}}</div>
+            <div class="docContents rb14reg" ng-switch="headerName">
+                <div ng-switch-when="Models">
+                    <!-- <iframe width="100%" height="100%" bind-compiled-html="modules/IoTSimulator/views/centerSection/model.html"  src="modules/IoTSimulator/views/centerSection/model.html" name="iframe_a"></iframe>
+                   <textarea rows="23" cols="81" readonly="true" ng-model="modelData" class="modelTextarea"></textarea>-->
+                    <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;"><ng-include src="'modules/Docs/views/rightSection/model.html'"></ng-include></div>
+                </div>
+                <div ng-switch-when="Event Models">
+                    <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;">
+                        <ng-include src="'modules/Docs/views/rightSection/eventmodels.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-when="APIs">
+                    <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;">
+                        <ng-include src="'modules/Docs/views/rightSection/api.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-default="TQL Overview">
+                    <div style="width:100%;height:100%;">
+                        <ng-include src="'modules/Docs/views/rightSection/tqloverview.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-when="Case Description">
+                    <div style="width:100%;height:100%;">
+                        <ng-include src="'modules/Docs/views/rightSection/casedescription.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-when="Sample App">
+                    <div style="width:100%;height:100%;">
+                        <ng-include src="'modules/Docs/views/rightSection/sampleapp.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-when="TQL Interactive">
+                    <div style="width:100%;height:100%;">
+                        <ng-include src="'modules/Docs/views/rightSection/tqlinteractive.html'"></ng-include>
+                    </div>
+                </div>
+                <div ng-switch-when="IOT Simulator">
+                    <div style="width:100%;height:100%;">
+                        <ng-include src="'modules/Docs/views/rightSection/iotsimulator.html'"></ng-include>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer starts-->
+    <div class="tql_footer">
+        <div class="footer rb13reg">
+            <ul>
+                <li><a style="text-decoration:none;">1151 Sonora Ct, Suite 2, Sunnyvale, CA 94086</a></li>
+                <li><i class="icon-skype" style="background-color:#21a9de;color:#fff;border-radius:4px;"></i><a style="color:#1e7eef;margin-left:10px;">+1 (408) 412-7224 </a></li>
+                <li><a style="text-decoration:none;" class="cursorHand" ng-click="mail()">info@atomiton.com</a></li>
+            </ul>
+            <ul class="pull-right" style="margin-right:50px;">
+                <li><i class="icon-twitter cursorHand" style="margin-right:10px;"tooltip="Twitter" tooltip-placement="top" ng-click="twitter()"></i></li>
+                <li><i class="icon-facebook cursorHand" style="margin-right:10px;"tooltip="Facebook" tooltip-placement="top" ng-click="facebook()"></i></li>
+                <li><i class="icon-linkedIn cursorHand" style="margin-right:10px;"tooltip="Linkedln" tooltip-placement="top" ng-click="linkedIn()"></i></li>
+            </ul>
+        </div>
+    </div>
+    <!--footer ends-->
+</div>

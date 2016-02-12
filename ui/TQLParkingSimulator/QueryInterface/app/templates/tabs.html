@@ -1,0 +1,9 @@
+<div class="treecontainer" ng-controller="HomeController" >
+	<treecontrol class="tree-classic"
+   tree-model="trees"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1">
+   {{node.name}}
+	</treecontrol>
+  </div>

@@ -1,0 +1,198 @@
+<div style="height: 100%" ng-controller="simulatorController"  >
+<div class="tqlhead iot_simulator">
+    <div class="logo"><img src="images/atomiton_header.png" width="93" height="50" /></div>
+    <ul class="tqlnav pull-right">
+	<li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+        <li ng-click="supportClick()"><a href="">Support</a></li>
+</ul>
+</div>
+<div class="tqldescription rb13reg">
+       <div class="tqlDesc"><b>IoT Smart City &gt; Parking</b><br/><br/>
+       <p>When IoT-enabled, smart cities become hyper-aware. Their infrastructure dynamically respond to the changing city contexts to maximize citizen experience and optimize efficiency.
+In this project you will see a multi-story parking lot, where cars will be coming and leaving. Your responsibility as an IoT developer is to make the parking lot responsive and efficient.
+</p></div>
+	   <div class="tqlSelect">
+	   Running Now:<select><option>{{orgData.Organization.id.Value}}</option></select>
+	   </div>
+</div>
+   
+    <div class="tql-leftSection">
+       
+        <!--accordion section starts-->
+        <div class="accordion_left">
+            <custom-accordian data="data" trees="trees" ontreeclick="clickedtree(node)"></custom-accordian>
+        </div>
+
+        <!--LEFT INNER ENDS-->
+
+    </div>
+  <!--   <div us-spinner spinner-key ="canvasSpinnerId" ng-include ="'modules/IoTSimulator/views/visualizer-partial.html'"> -->
+     <div class="tql-rightSection" >
+        <parking-visualizer unique-id="uniqueIdForCanvas"></parking-visualizer>
+        </div>
+<!--footer starts-->
+<div class="tql_footer">
+    <div class="footer rb13reg">
+        <ul>
+            <li><a style="text-decoration:none;">1151 Sonora Ct, Suite 2, Sunnyvale, CA 94086</a></li>
+            <li><i class="icon-skype" style="background-color:#21a9de;color:#fff;border-radius:4px;"></i><a style="color:#1e7eef;margin-left:10px;">+1 (408) 412-7224 </a></li>
+            <li><a style="text-decoration:none;" class="cursorHand" ng-click="mail()">info@atomiton.com</a></li>
+        </ul>
+        <ul class="pull-right" style="margin-right:50px;">
+            <li><i class="icon-twitter cursorHand" style="margin-right:10px;"tooltip="Twitter" tooltip-placement="top" ng-click="twitter()"></i></li>
+            <li><i class="icon-facebook cursorHand" style="margin-right:10px;"tooltip="Facebook" tooltip-placement="top" ng-click="facebook()"></i></li>
+            <li><i class="icon-linkedIn cursorHand" style="margin-right:10px;"tooltip="Linkedln" tooltip-placement="top" ng-click="linkedIn()"></i></li>
+        </ul>
+    </div>
+</div>
+<!--footer ends-->
+<modal-dialog show="nodeData" class="resources_popup">
+    <div class="model-content">
+        <div class="modal-header">
+            <h4 class="pull-left rb16bold" id="">Iot Smart City&gt;Parking&gt;{{roleName}}</h4>
+           <div class="headerIcons pull-right">
+            <!--<i class="icon-newWindow cursorHand" ng-click="newWindow(roleName)"></i>-->
+            <i class="icon-closePopup cursorHand" ng-click="hideModal()" style="margin-left:15px;"></i>
+           </div>
+        </div>
+        <div class="model-body" ng-switch="roleName">
+            <div ng-switch-when="Models" class="textContent">
+                <!-- <iframe width="100%" height="100%" bind-compiled-html="modules/IoTSimulator/views/centerSection/model.html"  src="modules/IoTSimulator/views/centerSection/model.html" name="iframe_a"></iframe>
+               <textarea rows="23" cols="81" readonly="true" ng-model="modelData" class="modelTextarea"></textarea>-->
+                <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;"><ng-include src="'modules/Docs/views/rightSection/model.html'"></ng-include></div>
+            </div>
+            <div ng-switch-when="Event Models" class="textContent">
+             <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;">
+                 <ng-include src="'modules/Docs/views/rightSection/eventmodels.html'"></ng-include>
+             </div>
+            </div>
+            <div ng-switch-when="APIs" class="textContent">
+                <div style="width:100%;height:100%;border:2px solid #ccc;padding:5px;">
+                    <ng-include src="'modules/Docs/views/rightSection/api.html'"></ng-include>
+                </div>
+            </div>
+			 <div ng-switch-when="Case Description" class="textContent">
+                <div style="width:100%;height:100%;">
+                    <ng-include src="'modules/Docs/views/rightSection/casedescription.html'"></ng-include>
+                </div>
+            </div>
+            <div ng-switch-when="Sample App" class="textContent">
+                <div style="width:100%;height:100%;">
+                    <ng-include src="'modules/Docs/views/rightSection/sampleapp.html'"></ng-include>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</modal-dialog>
+
+    <modal-dialog show="scorecardPopup" class="scorecard_Popup">
+        <div class="scorecard-modelContent">
+            <div class="scorecard-modelHeader">
+                <h4 class="pull-left rb18bold" id="">SCORECARD</h4>
+                <div class="headerIcons pull-right">
+                   <!-- <i class="icon-newWindow cursorHand" ng-click="newWindow()"></i>-->
+                    <i class="icon-closePopup cursorHand" ng-click="hidePopup()" style="margin-left:15px;"></i>
+                </div>
+            </div>
+            <div class="scorecard-modelBody">
+                <div class="scorecard-bodyHeader">
+                    <h4 class="header1 rb16bold">{{roleName}}</h4>
+                    <div class="scorecardSelect">
+                        Show score of:&nbsp;<select><option>{{orgData.Organization.id.Value}}</option></select>
+                    </div>
+                </div>
+
+                <div class="scorecard-bodyInnercontent">
+                    <div class="scorecard-bodyInnerbox rb16bold"><span style="text-transform:uppercase;">{{scoreTime | date:'dd/MM/yyyy hh:mm:ss'}}</span>
+                        <div class="scorecard-bodyInnerbox2">
+                            <div class="innerheader rb13reg">
+                                <p style="margin-bottom:5px;"><b>Scorecard description</b></p>
+                                <p style="margin-bottom:5px;">This is a scorecard of how your app is doing relatively to the simulated reality (Ideal). Compare and see if your business logic is being executed consistently based on a dynamic environment. At the bottom of the scorecard, you will see a number of total missed actions. A missed action is defined as any action that should be taken (e.g. changing the light intensity, turning a light off, or changing the meter price) but does not happen within 30 seconds of the triggering event.</p>
+                            </div>
+                            <div class="innercontent" ng-model="scoreData">
+                                <div class="innerHeading_content">
+                                    <div class="Heading">
+                                        <div class="Cellhead">
+                                            <p></p>
+                                        </div>
+                                        <div ng-repeat="item in scoreData.scorecard" class="Cellhead">
+                                            <p>{{item.appName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="innerColumns rb13reg">
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p><b>Area light Intensity</b></p>
+                                        </div>
+                                        <div class="Cell">
+                                            <p></p>
+                                        </div>
+                                        <div class="Cell">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p>Lights on Floor1</p>
+                                            <p>Lights on Floor2</p>
+                                            <p>Lights on Floor3</p>
+                                            <p>Lights on Floor4</p>
+                                        </div>
+                                        <div ng-repeat="item in scoreData.scorecard" class="Cell">
+                                            <p ng-repeat="lightIntensity in item.areaLightIntensity">{{lightIntensity.Value}}</p><br>
+                                        </div>
+                                    </div>
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p># of stall lights on</p>
+                                            <p># of stall lights off</p>
+                                        </div>
+                                        <div class="Cell" ng-repeat="item in scoreData.scorecard">
+                                            <p>{{item.stallLightOn}}</p>
+                                            <p>{{item.stallLightOff}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p><b>Current Parking rate</b></p>
+                                        </div>
+                                        <div class="Cell">
+                                        </div>
+                                        <div class="Cell">
+
+                                        </div>
+                                    </div>
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p>Rate on Floor1</p>
+                                            <p>Rate on Floor2</p>
+                                            <p>Rate on Floor3</p>
+                                            <p>Rate on Floor4</p>
+                                        </div>
+                                        <div class="Cell" ng-repeat="item in scoreData.scorecard">
+                                            <p ng-repeat="parkingrate in item.parkingRate">{{parkingrate.Value}}</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="Row">
+                                        <div class="Cell">
+                                            <p><b>Total number of missed actions</b></p>
+                                        </div>
+                                        <div class="Cell" ng-repeat="item in scoreData.scorecard">
+                                            <p>{{item.missedActions}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </modal-dialog>
+
+</div><!--outer-->
+

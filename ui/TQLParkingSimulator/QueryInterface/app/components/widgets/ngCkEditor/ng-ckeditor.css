@@ -1,0 +1,14 @@
+.ng-ckeditor{border:0 none}
+
+/* .cke_inner {
+	height : auto !important;
+} */
+
+/* .cke_contents {
+	height :inherit !important;
+	overflow : scroll !important;
+} */
+
+.cke_editor_editor {
+	height: 100% !important;
+}

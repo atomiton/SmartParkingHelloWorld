@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+version = 0.5
+
+task TQLStudioZip(type: Zip) {
+	from 'QueryInterface/'
+	into 'QueryInterface/'
+}
+println "Creating an zip archive"
+println TQLStudioZip.archiveName

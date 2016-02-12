@@ -1,0 +1,31 @@
+<div style="width:100%;height:100%;overflow-x:auto;overflow-y:auto;border:2px solid #ccc;padding:5px;" ng-controller = "docController">
+    <div class="caseDescriptionHeadMain rb18bold">
+        <p>TQL Overview</p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg">
+        <p>Atomiton TQL System is a supervisory execution system for the Internet of Things (IoT). It enables people and applications to organize, access, and interact with large numbers of distributed but interconnected “things”, where “things” are defined as sensors, devices, machines, people, as well as passive resources instrumented with sensors</p>
+        <p>TQL System has three components: TQL Engine, IoT Simulator and TQL Studio.</p>
+        <p>TQL Engine is an event-driven, language-centric engine that allows the modeling/abstraction of things, the querying of things through such models, and interaction with things.</p>
+        <p>IoT Simulator is a cloud-based service that simulates how physical things interact with applications and/or interact with each other. The IoT Simulator simulates systems of things at scale from small to large, in order to help conceptualize, design, and test IoT applications.</p>
+        <p>TQLStudio brings the TQL Engine functions to the developer. It is a web application that allows TQL System users (developers, analyst, business owners) to model, query, and manage things in the context of building and testing IoT applications.</p>
+    </div>
+    <div class="caseDescriptionsecond rb16bold">
+        <p style="color:#0f97f9;">Using TQL to build IoT</p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg">
+        <p style="height:auto;width:100%;"><img src="images/tqloverview.png" width="100%" height="100%" style="max-width:806px;max-height:218px;"/></p>
+    </div>
+    <div class="caseDescriptionsecond rb16reg">
+        <p class="mgLeft10 lightBlue">1.Installation</p>
+        <p>You will start by installing JDK 1.7+ and downloads TQL System from the given site.</p>
+        <p class="mgLeft10 lightBlue">2.Author Thing Models Using TDL</p>
+        <p>Thing models are the logical representations of the “Things” in the IoT system. Thing models are entities with attributes, properties and operations.  There are two types of thing models: data models and physical models.</p>
+        <p>Physical models have direct interactions with external physical entities, via sensing and/or actuating relationships. Data models do not have directly interaction with physical entities outside the software.</p>
+        <p class="mgLeft10 lightBlue">3.Develop Model Facets</p>
+        <p>Model facets are implementations that map between “Things” in the physical world and models in TQL. Physical models (as explained in section 2) need model facets to update states and/or actuate actions in the external world. Data models on the other hand, do not need model facets</p>
+        <p class="mgLeft10 lightBlue">4.Compile & Deploy Package</p>
+        <p>A Package contains the thing models and model facets required for a particular application. A package is a unit of deployment. Packages can be incrementally deployed.</p>
+        <p class="mgLeft10 lightBlue">5.Write TQL Queries</p>
+        <p>Now write TQL queries like those you see in the TQL Interactive Shell</p>
+    </div>
+</div>

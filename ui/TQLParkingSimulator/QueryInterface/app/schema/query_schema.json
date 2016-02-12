@@ -1,0 +1,299 @@
+[
+    {
+            "name":"Models",
+            "type":"model",
+        "perspectives":[
+            {
+                "name":"Graph",
+                "type":"graph",
+                "templateUrl": "templates/Models/graphModelTemplate.html",
+                "default":true,
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                    ],
+                "resultPanel":[
+
+                ]
+            },
+            {
+                "name":"XML",
+                "type":"xml",
+                "templateUrl": "templates/Models/xmlModelTemplate.html",
+                "default":"",
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                ],
+                "resultPanel":[
+
+                ]
+            },
+            {
+                "name":"JSON",
+                "type":"json",
+                "templateUrl": "templates/Models/jsonModelTemplate.html",
+                "default":"",
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                ],
+                "resultPanel":[
+
+                ]
+            },
+            {
+                "name":"Configure",
+                "type":"configure",
+                "templateUrl": "templates/Models/jsonModelTemplate.html",
+                "default":"",
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"model:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"model:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"model:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"model:execute"
+                    }
+                ],
+                "resultPanel":[
+
+                ]
+            }
+
+        ],
+
+        "children":[
+
+            {
+                "name":"namespace1",
+                "children":[
+                    {
+                        "name":"sub-namespace1",
+                        "children":[
+                            {
+                                "id":"123",
+                                "name":"Light",
+                                "type":"model",
+                                "children":[],
+                                "perspective":"graph",
+                                "selectedResultPanel":""
+
+                            },
+                            {
+                                "id":"456",
+                                "name":"Parking",
+                                "type":"model",
+                                "children":[],
+                                "perspective":"json",
+                                "selectedResultPanel":""
+                            },
+                            {
+                                "id":"789",
+                                "name":"Traffic",
+                                "type":"model",
+                                "children":[],
+                                "perspective":"xml",
+                                "selectedResultPanel":""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name":"namespace2",
+                "children":[
+                    {
+                        "name":"sub-namespace2",
+                        "children":[
+                            {
+                                "id":"111",
+                                "type":"model",
+                                "name":"Traffic",
+                                "perspective":"json",
+                                "children":[],
+                                "selectedResultPanel":""
+
+
+                            },
+                            {
+                                "id":"222",
+                                "type":"model",
+                                "name":"Parking",
+                                "perspective":"graph",
+                                "children":[],
+                                "selectedResultPanel":""
+                            },
+                            {
+                                "id":"333",
+                                "type":"model",
+                                "name":"Lights",
+                                "perspective":"xml",
+                                "children":[],
+                                "selectedResultPanel":""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"Queries",
+        "type":"query",
+        "templateUrl": "templates/Queries/queryTemplate.html",
+        "perspectives":[
+            {
+                "name":"qPerspective1",
+                "type":"qPerspective1",
+                "templateUrl": "templates/Queries/queryTemplate1.html",
+                "default":true,
+                "actions":[
+                    {
+                        "type":"Save",
+                        "event":"query:save"
+                    },
+                    {
+                        "type":"Save As",
+                        "event":"query:saveAs"
+                    },
+                    {
+                        "type":"Run",
+                        "event":"query:run"
+                    },
+                    {
+                        "type":"Execute",
+                        "event":"query:execute"
+                    }
+                ],
+                "resultPanel":[
+                    {
+                        "type":"Raw",
+
+                        "event":"query:formatRaw"
+                    },
+                    {
+                        "type":"Tree",
+
+                        "event":"query:formatTree"
+                    },
+                    {
+                        "type":"Json",
+
+                        "event":"query:formatJson"
+                    }
+                ]
+            }
+
+        ],
+        "children":[
+
+
+        ]
+
+    },
+    {
+        "name":"Policies",
+        "type":"policy",
+        "perspectives":[
+            {
+                "name":"polPerspective",
+                "type":"polPerspective",
+                "default":true,
+                "templateUrl": "templates/Policies/policyTemplate.html",
+                "actions": [
+                    {
+                        "type": "Save",
+                        "event": "policy:save"
+                    },
+                    {
+                        "type": "Save As",
+                        "event": "policy:saveAs"
+                    },
+                    {
+                        "type": "Run",
+                        "event": "policy:run"
+                    },
+                    {
+                        "type": "Execute",
+                        "event": "policy:execute"
+                    }
+                ],
+                "resultPanel": [
+                    {
+                        "type": "Raw",
+                         "default":true,
+                        "event": "policy:formatRaw"
+                    },
+                    {
+                        "type": "Tree",
+                        "default":false,
+                        "event": "policy:formatTree"
+                    },
+                    {
+                        "type": "Json",
+                        "default":false,
+                        "event": "policy:formatJson"
+                    }
+                ]
+            }
+    ],
+        "children":[
+
+
+        ]
+
+    }
+
+]

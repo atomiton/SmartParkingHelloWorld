@@ -1,0 +1,44 @@
+<div class="tab-pane active" id="">
+        <div class="tabcontent_outer">
+        <div class="settings_menu">
+        <tool-bar actions-array="actions"  ></tool-bar>
+        	<div id="popupmodal" style="display:none;">
+        	<div id="popupContact">
+			<!-- Contact Us Form -->
+			<form action="" id="form" method="post" name="form">
+			<img id="close" src="images/close-icon.png" ng-click="popup_hide()"width="25" height="25">
+			<span class="selectbox" style="position: relative; width:20%"><!-- style="position: relative; width:20%" -->
+			<select name="dropdown" class="dropdown" ng-model="configured.requestType">
+			<option id="http" value="http">Http</option>
+			<option id="websocket" value="websocket">WebSocket</option>
+			</select>
+			</span>
+			<span>
+			<input type="text" id="" name="socketurl"  ng-model="configured.url" style="width:72%;"/>
+			</span>
+			<div class="dropdown-content" ng-switch on="configured.requestType">
+			<div id="radiobuttons" ng-switch-when="http">
+			<input type="radio" ng-model="configured.requestMethod" value="GET" >GET</input>
+			<input type="radio" ng-model="configured.requestMethod" value="POST">POST</input>
+			<input type="radio" ng-model="configured.requestMethod" value="PUT" >PUT</input>
+			</div>
+			<div ng-switch-when="websocket">
+			</div>
+			</div>
+			<input class="ok" type="button" ng-click="ok()" value="OK"/>
+			</form>
+			</div>
+			</div>
+        </div>
+        <div class="tabs_inner">
+          <div class="editor">
+           
+            <textarea ckeditor="editorOptions" name="editor" ng-model="queryText"  ng-change="save()"></textarea>
+            
+          </div>
+          <tab-panel title="'Results'" result-data="result" tabs="tabs"></tab-panel>
+          </div>
+          
+          
+        </div>
+      </div>

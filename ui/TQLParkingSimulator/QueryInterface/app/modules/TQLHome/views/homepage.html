@@ -1,0 +1,138 @@
+<div ng-controller="HomeController" id="homecontrollerid" style="height: 100%">
+
+    <modal-dialog show="visualizerLaunched" class="visulaizeralert">
+        <div class="visulaizerContent">
+            <div class="visualiserHeader">
+                <h4 class="pull-left rb16bold">Visualizer</h4>
+                <div class="headerIcons pull-right">
+                    <i class="icon-closePopup cursorHand" ng-click="hideVisualizerPrompt();" style="margin-left:15px;"></i>
+                </div>
+            </div>
+            <div class="visualiserBody">
+                <div class="visualizerQuestion">
+                    <div class="rb14reg">Do you want to Launch the Visualizer?</div>
+                </div>
+                <div class="visulaizerButton">
+                    <button class="btn btn-sm btn-green btnStyles" ng-click="launch();"> Launch </button>
+                    <button class="btn btn-sm btn-Red btnStyles" ng-click="hideVisualizerPrompt();"> No, Thanks </button>
+                </div>
+            </div>
+        </div>
+    </modal-dialog>
+
+    <modal-dialog show="errorOccured" class="visulaizeralert">
+        <div class="visulaizerContent">
+            <div class="visualiserHeader">
+                <h4 class="pull-left rb16bold">Error</h4>
+                <div class="headerIcons pull-right">
+                    <i class="icon-closePopup cursorHand" ng-click="hideErrorPrompt();" style="margin-left:15px;"></i>
+                </div>
+            </div>
+            <div class="visualiserBody">
+                <div class="visualizerQuestion">
+                    <div class="rb14reg">{{error}}</div>
+                </div>
+                <div class="visulaizerButton">
+                    <button class="btn btn-sm btn-green btnStyles" ng-click="hideErrorPrompt();"> Ok</button>
+                </div>
+            </div>
+        </div>
+    </modal-dialog>
+
+    <div class="tqlhead try_tql">
+        <div class="logo">
+            <img src="images/atomiton_header.png" width="93" height="50" />
+        </div>
+        <ul class="tqlnav pull-right">
+
+            <li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+            <li ng-click="supportClick()"><a href="">Support</a></li>
+
+        </ul>
+    </div>
+    <section style="width: 100%; height: calc(100% -   100px);">
+        <div class="interactiveShell">
+            <div  class="multilineEditor">
+                <section class="shellheading">
+                    <font size="6">This is a TQL interactive shell in your
+                        browser</font> <font size="5">- &nbsp; &nbsp;just the tip of the
+                    iceberg</font>
+                    <button class="btn btn-sm btn-green registerStyles" popover="{{dynamicPopover}}" popover-title="{{dynamicPopoverTitle}}"  popover-trigger="mouseenter" popover-placement="right" style="margin-left:50px;margin-bottom:15px;" ng-click="register()">Register</button>
+                </section>
+                <section class="collapseIcon" ng-show="enableMinimize">
+                    <button id="collapseTerminalButton" class="collapseBtn"
+                            data-toggle="collapse" data-target="#terminal">
+                        <span class="icon-Collapse font20" aria-hidden="true"></span>
+                    </button>
+                </section>
+                <div class="terminalSection">
+                    <!-- <div id="terminal"
+                        class="terminalOuter terminalLayout queryTerminal">
+                        <query-terminal execute="executeCommand(command)"
+                            greeting="shellGreeting"></query-terminal>
+                    </div> -->
+                    <div id="terminal" class="terminalOuter terminalLayout queryTerminal">
+                        <div  style="height:100%;width:100%;float:left;">
+                            <div style="height:35px;width:100%;float:left;">
+                                <tool-bar actions-array="actions" action-handler="executeCommand(action)" unique-id="{{elementId}}"></tool-bar>
+                            </div>
+                            <!--<div style="height:35px;width:100%;float:left;">
+                                <div class="editingdiv" ng-repeat="actionsGroup in editorTools">
+                                    <button type="button" class="btn editingbutton" ng-disabled="{{action.disabled == true}}"
+                                        ng-repeat="action in actionsGroup" ng-click="handleEditorToolAction(action)">
+                                        <i ng-class="action.icon"></i>{{action.name}}
+                                    </button>
+                                    <span class="divider" ng-if="$last == false"></span>
+                                </div>
+                            </div>-->
+                            <div class="multiEditor">
+
+                                <div us-spinner spinner-key="editor" class="editortool" ui-ace="{
+							      useWrapMode : true,
+							      showGutter: false,
+							      theme:'merbivore',
+							      mode: 'xml',
+							      onChange: aceChanged,
+							      onLoad : aceLoaded
+							    }" ng-model="queryText">
+                                    <!-- <textarea ckeditor="editorOptions" name="editor" ng-model="queryText"  ng-change="save()"></textarea> -->
+                                </div>
+                                <tab-panel  title="'Results'" unique-id="{{elementId}}" result-data="result" tabs="resultPanel" ></tab-panel>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="adjacent-visualizer" class="hidden-item" style="float:left;">
+
+					<span class="launchedVisualizer ">
+						<div class="shellVisualiser" >
+                            <!-- <ng-include
+                                    src="'modules/IoTSimulator/views/visualizer-partial.html'"></ng-include> -->
+                            <parking-visualizer unique-id="uniqueIdForCanvas"></parking-visualizer>
+                        </div>
+					</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--footer starts-->
+    <div class="tql_footer">
+        <div class="footer rb14reg">
+            <ul>
+                <li><a style="text-decoration:none;">1151 Sonora Ct, Suite 2, Sunnyvale, CA 94086</a></li>
+                <li><i class="icon-skype" style="background-color:#21a9de;color:#fff;border-radius:4px;"></i><a style="color:#1e7eef;margin-left:10px;">+1 (408) 412-7224 </a></li>
+                <li><a style="text-decoration:none;" class="cursorHand" ng-click="mail()">info@atomiton.com</a></li>
+            </ul>
+            <ul class="pull-right" style="margin-right:50px;">
+                <li><i class="icon-twitter cursorHand" style="margin-right:10px;"tooltip="Twitter" tooltip-placement="top" ng-click="twitter()"></i></li>
+                <li><i class="icon-facebook cursorHand" style="margin-right:10px;"tooltip="Facebook" tooltip-placement="top" ng-click="facebook()"></i></li>
+                <li><i class="icon-linkedIn cursorHand" style="margin-right:10px;"tooltip="Linkedln" tooltip-placement="top" ng-click="linkedIn()"></i></li>
+            </ul>
+        </div>
+    </div>
+    <!--footer ends-->
+
+
+</div>
+<!-- Home Controller div ends -->

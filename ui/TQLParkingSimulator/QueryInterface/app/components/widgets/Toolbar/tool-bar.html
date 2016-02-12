@@ -1,0 +1,8 @@
+
+	<div class="editingdiv" ng-repeat="actionsGroup in actionsArray">
+		<button type="button" class="btn editingbutton" ng-disabled="action.disabled"
+                ng-repeat="action in actionsGroup" ng-click="handleAction(action)">
+			<i ng-class="action.icon"></i>{{action.name}}
+		</button>
+		<span class="divider" ng-if="$last == false"></span>
+	</div>

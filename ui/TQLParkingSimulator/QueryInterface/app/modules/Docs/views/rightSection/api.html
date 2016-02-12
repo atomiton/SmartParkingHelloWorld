@@ -1,0 +1,167 @@
+<div style="width:100%;height:100%;overflow-x:auto;overflow-y:auto;" ng-controller = "docController">
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;">
+        <p>Get the list of all the organizations who manage Parking Lot</p>
+    </div>
+    <div class="apiDesc">
+        The purpose of this API is to get the list of all the Organization that are responsible for managing their respective Parking Lot. The result of this API can be used :
+         - To retrieve the current parking lot snapshot. The “id” attribute value is used to formulate the download file URL of current parking lot snapshot.<br/>
+       <p class="mgLeft10">Example:<br/>
+       <span class="linkblue">http://tql.atomiton.com:8080/fid-ParkingResoures/res/Atom-Org-1/splatest.json</span><br/>
+        [Atom-Org-1 is the Organization “id” Value.]</p>
+    </div>
+    <div class="eventTable mg10 rb14reg">
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">API:</div>
+            <div class="col2 linkblue left10">{{allOrganization}}
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">HTTP Method:
+            </div>
+            <div class="col2 left10">GET
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Input JSON Format:
+            </div>
+            <div class="col2 left10">None
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Output JSON Format:
+            </div>
+            <div class="col2 left10">
+                <json-formatter  json="datavalue3" open="50"></json-formatter>
+            </div>
+        </div>
+    </div>
+    
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;">
+        <p>Current Snapshot of the Parking Lot</p>
+    </div>
+    <div class="apiDesc">
+      <p>The URL to retrieve initial/base version of the parking lot is:</p>
+      <p><span class="linkblue mgLeft10">http://tql.atomition.com:8080/fid-ParkingResources/res/&lt;Org-Id&gt;/splatest.json</span></p>
+      <p>Change the value of Org-Id with the value received as part of “get” Organization API call.</p>
+      <p><span class="linkblue mgLeft10">http://tql.atomiton.com:8080/fid-ParkingResources/res/Atom-Org-1/splatest.json</span></p>
+    </div>
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;margin-bottom:10px;">
+        <p>Get the Smart Parking Data Model</p>
+    </div>
+    <div class="apiDesc">
+        <p>The purpose of this API is to get the data model associated with Smart Parking Lot. Knowing the model is useful in order to perform update / read operations on the individual.</p>
+    </div>
+    <div class="eventTable mg10 rb14reg">
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">API:</div>
+            <div class="col2 linkblue left10">{{dataModel}}
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">HTTP Method:
+            </div>
+            <div class="col2 left10">Post
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Input JSON Format:
+            </div>
+            <div class="col2 left10">None
+            </div>
+        </div>
+    </div>
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;margin-bottom:10px;">
+        <p>
+            Read All Individual Objects from a specific entity
+        </p>
+    </div>
+    <div class="apiDesc">
+        <p>The purpose of this API is to read all the objects that are part of a given entity. Example of Entitiy/Models are (from Get Smart Parking Data Model API): ParkingFloor, ParkingSpot, Camera, AreaLights, etc.</p>
+    </div>
+    <div class="eventTable mg10 rb14reg">
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">API:</div>
+            <div class="col2 linkblue left10">{{allIndividualObjects}}
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">HTTP Method:
+            </div>
+            <div class="col2 left10">Post
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Input JSON Format:
+            </div>
+            <div class="col2 left10">None
+            </div>
+        </div>
+    </div>
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;margin-bottom:10px;">
+        <p>
+            Read individual Objects from a specific entity and apply filters to select specific object
+        </p>
+    </div>
+    <div class="apiDesc">
+        <p>The purpose of this API is to read a specific object from the data model. For example, to Read the AreaLight with parkingSpotId = “Atom-Org-1.F10.S10” you will apply the filter to the Query string parameter – “FilterName”.</p>
+        <p>Format of FilterName itself is a JSON object as follows:<br/>
+          <b>{“eq”: {“target”: “parkingFloorId”, “value”: “Atom-Org-1.F10.S10”}}</b>
+        </p>
+    </div>
+    <div class="eventTable mg10 rb14reg">
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">API:</div>
+            <div class="col2 linkblue left10">{{allSpecificEntity}}
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">HTTP Method:
+            </div>
+            <div class="col2 left10">Post
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Input JSON Format:
+            </div>
+            <div class="col2 left10">None
+            </div>
+        </div>
+    </div>
+    <div class="eventFirstrow rb16bold" style="margin-top:10px;margin-bottom:10px;">
+        <p>
+            General Purpose Update on the specific data model
+        </p>
+    </div>
+    <div class="apiDesc">
+        <p>The purpose of this API is to perform an “update” on a specific data model. The update operation results in broadcast of an Event for the IoT Visualizer to make the User interface change.</p>
+        <p>Performing an update is a two step process:<br/></p>
+        <p class="mgLeft10">
+            1)	Read the appropriate object using the read with FilterName.<br/>
+            2)	Extract the sid (Unique internal Id of the object) and version of the attribute which is going to be part of the update operation.<br/>
+            3)	Create a new filter that includes the version of the attribute and issue a update command.
+        </p>
+        <p>For Example to change the State of ParkingSport the POST JSON will be:</p>
+        <p> <json-formatter  json="postJson" open="50"></json-formatter>
+        </p>
+    </div>
+    <div class="eventTable mg10 rb14reg">
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">API:</div>
+            <div class="col2 linkblue left10">{{allSpecificEntity}}
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">HTTP Method:
+            </div>
+            <div class="col2 left10">Post
+            </div>
+        </div>
+        <div class="eventRow leftAlign">
+            <div class="col1 rb16bold colorRed left10">Input JSON Format:
+            </div>
+            <div class="col2 left10">
+             <json-formatter  json="postJson" open="50"></json-formatter>
+            </div>
+        </div>
+    </div>
+</div>

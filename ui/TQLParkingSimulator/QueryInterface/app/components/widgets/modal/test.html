@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <title>Modal Widget Test</title>
+
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="modal.css" rel="stylesheet">
+ <!--  <script src="script.js"></script> -->
+    <script src="../ngCkEditor/ckeditor.js"></script>
+    <script src="../ngCkEditor/ng-ckeditor.js"></script>
+    <script src="../mq.widget.module.js"></script>
+    
+
+    <!-- jQuery -->
+   <!--  <script src="../../../ext_libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../lib/bootstrap.min.js"></script>
+    <script src="../ext_libs/modal.js"></script>
+    <script src="../ext_libs/transition.js"></script> -->
+
+   
+  	
+
+  	<script src="mq.widget.Modal.js"></script>
+
+    
+   
+</head>
+
+
+<body ng-app="myApp">
+    <div data-ng-controller="myController1" style="padding: 10px 10px;">
+        <button ng-click="showModal()" class="btn">Launch Modal</button>
+
+            <modal-dialog show="modalShow"> 
+            <div class="popModal">
+        	<div  class="popContact">
+			<!-- Contact Us Form -->
+			<form action=""  method="post" name="form">
+			<!-- <img class="Close"src="images/close-icon.png" ng-click="popup_hide()"width="25" height="25"> -->
+			<span class="selectbox" style="position: relative; width:20%"><!-- style="position: relative; width:20%" -->
+			<select name="dropdown" class="dropdown" ng-model="configured.type">
+			<option  value="http">Http</option>
+			<option value="websocket">WebSocket</option>
+			</select>
+			</span>
+			<span>
+			<input type="text"  name="socketurl"  ng-model="configured.url" style="width:72%;"/>
+			</span>
+			<div class="dropdown-content" ng-switch on="configured.type">
+			<div ng-switch-when="http">
+			<input type="radio" ng-model="configured.method" value="GET" >GET</input>
+			<input type="radio" ng-model="configured.method" value="POST">POST</input>
+			<input type="radio" ng-model="configured.method" value="PUT" >PUT</input>
+			</div>
+			<div ng-switch-when="websocket">
+			</div>
+			</div>
+			<input class="ok" type="button" ng-click="ok()" value="OK"/>
+			</form>
+			</div>
+			</div>
+            </modal-dialog>
+    </div>
+
+    <script>
+
+        var myApp = angular.module('myApp',['widgetModule']);
+        /*
+         * @name myController
+         * @requires angular module instance
+         * @description this controller sets up the options that is passed to modal directive
+         *
+         * */
+        myApp.controller('myController1',function ($scope ) {
+
+            $scope.testObj = {
+                foo: 'bar',
+                moo: 'far',
+                goo: {
+                    name: 'car',
+                    val: 59
+                }
+            };
+
+            $scope.saveTestObj = function(modalData) {
+                $scope.testObj = modalData;
+            }
+
+            $scope.modalId   =  'modal-sample';
+            $scope.modalShow = false;
+
+            $scope.showModal = function() {
+                $scope.modalShow = true;
+            };
+
+
+        });
+
+       </script>
+
+  
+
+
+
+
+</body>
+</html>

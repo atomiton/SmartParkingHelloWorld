@@ -1,0 +1,222 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: TQL_01.ai
+Color Mode: RGB color
+Color Profile: sRGB IEC61966-2.1
+Ruler Units: pixels
+Artboard Dimensions: 1400 px x 1200 px
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+K=100 (CMYK)
+R=125 G=30 B=41 1 (RGB)
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:NONE
+
+-----------------------------------------------------------------------------
+Fonts:
+FontAwesome (OTF)
+DINPro-CondRegular (OTF)
+Open Sans (OTF)
+Open Sans Bold (OTF)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+NONE
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/base.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 6562K, 1400 by 1200 pixels
+Dimensions: 1400 by 1200 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/almerperez/Documents/01_CLIENTS/100_TQL/00_ART/links/leftMenu.psd
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 68K, 250 by 70 pixels
+Dimensions: 250 by 70 points 
+Resolution: 72 by 72 pixels per inch

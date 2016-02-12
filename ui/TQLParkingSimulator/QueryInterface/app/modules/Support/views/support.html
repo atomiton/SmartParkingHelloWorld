@@ -1,0 +1,27 @@
+<div ng-controller="supportController" style="width:100%;height:100%;">
+    <div class="tqlhead support">
+	 <div class="logo"><img src="images/atomiton_header.png" width="93" height="50" /></div>
+        <ul class="tqlnav pull-right">
+
+            <li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+
+        </ul>
+    </div>
+    <section  style="width: 100%; height: calc(100% -  100px);"></section>
+    <!--footer starts-->
+    <div class="tql_footer">
+        <div class="footer rb13reg">
+            <ul>
+                <li><a style="text-decoration:none;">1151 Sonora Ct, Suite 2, Sunnyvale, CA 94086</a></li>
+                <li><i class="icon-skype" style="background-color:#21a9de;color:#fff;border-radius:4px;"></i><a style="color:#1e7eef;margin-left:10px;">+1 (408) 412-7224 </a></li>
+                <li><a style="text-decoration:none;" class="cursorHand" ng-click="mail()">info@atomiton.com</a></li>
+            </ul>
+            <ul class="pull-right" style="margin-right:50px;">
+                <li><i class="icon-twitter cursorHand" style="margin-right:10px;"tooltip="Twitter" tooltip-placement="top" ng-click="twitter()"></i></li>
+                <li><i class="icon-facebook cursorHand" style="margin-right:10px;"tooltip="Facebook" tooltip-placement="top" ng-click="facebook()"></i></li>
+                <li><i class="icon-linkedIn cursorHand" style="margin-right:10px;"tooltip="Linkedln" tooltip-placement="top" ng-click="linkedIn()"></i></li>
+            </ul>
+        </div>
+    </div>
+    <!--footer ends-->
+</div>

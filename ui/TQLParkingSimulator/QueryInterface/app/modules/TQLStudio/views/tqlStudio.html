@@ -1,0 +1,72 @@
+<div ng-controller="studioController" xmlns="http://www.w3.org/1999/html" style="width:100%;height:100%;">
+<div class="tqlhead tql_studio">
+    <div class="logo"><img src="images/atomiton_header.png" width="93" height="50" /></div>
+    <ul class="tqlnav pull-right">
+    
+    <li ng-repeat="tab in tabs"><a href="{{'#'+ tab.linkURL}}">{{tab.title}}</a></li>
+        <li ng-click="supportClick()"><a href="">Support</a></li>
+	
+</ul>
+</div>
+    <section class="studioOuter">
+    <div class="studioContent">
+        <div class="registerForm">
+           <div class="regColumn1">
+              <div class="rb100bold leftHead1">TQL</div>
+               <div class="rb38bold leftHead2">IoT&nbsp; Business&nbsp; Logic <br/>
+                   -&nbsp;&nbsp;Made&nbsp;&nbsp;Simple, For&nbsp;Scale </div>
+           </div>
+           <span class="regDivider"></span>
+           <div class="regcolumn2">
+               <div class="regColumnInner">
+               <div class="fontWhite firstTitle rb24bold">TQL1.O is coming Soon</div>
+               <div class="fontWhite regDesc rb14reg">Develop IoT applications for Smart Cities, Smart Logistics, Smart Hospitals, Interactive Retail; Solving business problems at scales never imagined before. Coming Spring 2015!
+               </div>
+               <div class="registerBox">
+               <div class="boxTitle1 rb14reg">Be the first to get the news and try it</div>
+               <div class="regLabels rb14reg">
+                   <div class="regLabel1">Name</div>
+                   <div class="regLabel2">Email</div>
+               </div>
+               <form class="formbox" name="registerForm">
+                  <div class="formName">
+                       <input type="text" ng-model="username" name="user" required>
+                   </div>
+                   <div class="formEmail" >
+                       <input type="email" ng-model="email" name="email" required>
+                   </div>
+                   <div class="regButton">
+                       <button type="button" class=" btn btn-sm btn-green" value="Register" ng-click="register()" ng-disabled="registerForm.$invalid">Register</button>
+                   </div>
+               </form>
+               <div class="lastregDiv rb12bold">
+                   <div class="textTwitter">Follow us on Twitter<i class="icon-twitter cursorHand" style="padding-left:5px;" ng-click="twitter()"></i></div>
+                   <div class="regCheck">
+                     <input type="checkbox" ng-model="recvMarketing"  ng-true-value="Yes"
+                       ng-false-value="No">Contact me for Beta trials</input>
+                   </div>
+               </div>
+               </div>
+               </div>
+           </div>
+        </div>
+       <!-- <img src="images/studio_image.jpg" width="100%" height="100%">-->
+    </div>
+    </section>
+    <!--footer starts-->
+    <div class="tql_footer">
+        <div class="footer rb13reg">
+            <ul>
+                <li><a style="text-decoration:none;">1151 Sonora Ct, Suite 2, Sunnyvale, CA 94086</a></li>
+                <li><i class="icon-skype" style="background-color:#21a9de;color:#fff;border-radius:4px;"></i><a style="color:#1e7eef;margin-left:10px;">+1 (408) 412-7224 </a></li>
+                <li><a style="text-decoration:none;" class="cursorHand" ng-click="mail()">info@atomiton.com</a></li>
+            </ul>
+            <ul class="pull-right" style="margin-right:50px;">
+                <li><i class="icon-twitter cursorHand" style="margin-right:10px;"tooltip="Twitter" tooltip-placement="top" ng-click="twitter()"></i></li>
+                <li><i class="icon-facebook cursorHand" style="margin-right:10px;"tooltip="Facebook" tooltip-placement="top" ng-click="facebook()"></i></li>
+                <li><i class="icon-linkedIn cursorHand" style="margin-right:10px;"tooltip="Linkedln" tooltip-placement="top" ng-click="linkedIn()"></i></li>
+            </ul>
+        </div>
+    </div>
+    <!--footer ends-->
+</div>

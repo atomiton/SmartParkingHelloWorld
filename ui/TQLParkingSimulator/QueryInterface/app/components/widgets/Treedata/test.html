@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tree Structure</title>
+ 
+  
+  
+  
+    <script src="../ext_libs/jquery/dist/jquery.min.js"></script>
+  <script src="../ext_libs/angular/angular.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>-->
+    <script src="../mq.widget.module.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/tree-control.css">
+	<script type="text/javascript" src="mq.widget.tree.js"></script>
+	<script>
+
+
+//angular.module('myApp.controllers');
+var treeWidget = angular.module('treeWidget', ['treeControl','widgetModule','ui.bootstrap']);
+
+  function TreeCtrl($scope, $compile) {
+	$scope.treeOptions = {
+    nodeChildren: "children",
+    dirSelectable: true,
+    injectClasses: {
+        ul: "a1",
+        li: "a2",
+        liSelected: "a7",
+        iExpanded: "a3",
+        iCollapsed: "a4",
+        iLeaf: "a5",
+        label: "a6",
+        labelSelected: "a8"
+    }
+}
+$scope.dataForTheTree =
+[
+    { "name" : "Joe", "age" : "21", "children" : [
+        { "name" : "Smith", "age" : "42", "children" : [] },
+        { "name" : "Gary", "age" : "21", "children" : [
+            { "name" : "Jenifer", "age" : "23", "children" : [
+                { "name" : "Dani", "age" : "32", "children" : [] },
+                { "name" : "Max", "age" : "34", "children" : [] }
+            ]}
+        ]}
+    ]},
+    { "name" : "Albert", "age" : "33", "children" : [] },
+    { "name" : "Ron", "age" : "29", "children" : [] }
+];
+
+  }// controller ends
+
+</script>
+</head>
+ 
+
+ 
+<body>
+  <div ng-controller="TreeCtrl">
+			<treecontrol class="tree-classic"
+   tree-model="dataForTheTree"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1">
+   employee: {{node.name}} age {{node.age}}
+</treecontrol>
+    </div>
+  
+</div>
+</body>
+</html>
